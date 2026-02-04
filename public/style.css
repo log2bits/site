@@ -1,0 +1,224 @@
+/* ===================== Theme ===================== */
+
+:root {
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+}
+
+/* ===================== Reset ===================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===================== Base  ===================== */
+
+body {
+  background: var(--base);
+  color: var(--subtext0);
+  font-family: "Fira Sans";
+  word-wrap: break-word;
+}
+
+a {
+  color: var(--mauve);
+  text-decoration: none;
+}
+
+strong {
+  color: var(--text);
+}
+
+/* ===================== Layout ===================== */
+
+main {
+  max-width: 37.5rem;
+  margin: 14vh auto 0;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+/* consistent vertical rhythm */
+main > * + *,
+section > * + * {
+  margin-top: 1rem;
+}
+
+/* ===================== Elements ===================== */
+
+.icon {
+  margin: 0 0 1.75rem;
+  image-rendering: pixelated;
+}
+
+.web-code {
+  margin-top: 1rem;
+  color: var(--overlay0);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Fira Mono";
+}
+
+.desc {
+  color: var(--overlay0);
+}
+
+ul,
+ol {
+  padding-left: 2.5rem;
+  line-height: 1.5rem;
+  margin-top: 0rem;
+}
+
+/* ===================== Buttons / Nav ===================== */
+
+nav {
+  margin-top: 3rem;
+}
+
+nav::after {
+  content: "";
+  display: table;
+  clear: both;
+  width: 100%;
+}
+
+.btn {
+  border: 0;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.primary {
+  float: left;
+  background: var(--blue);
+  color: var(--base);
+}
+
+.secondary {
+  float: right;
+  background: var(--base);
+  border: 1px solid var(--surface2);
+  color: var(--blue);
+  text-align: center;
+}
+
+/* ===================== Typography ===================== */
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+hr {
+  color: var(--surface1);
+}
+
+@keyframes drop-in {
+  0% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.icon {
+  animation: drop-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+:root {
+  --list-hue-start: 267deg;
+  --list-sat: 84%;
+  --list-light: 81%;
+}
+
+:root {
+  --list-hue-start: 267deg;
+  --list-sat: 84%;
+  --list-light: 81%;
+
+  --list-cycle: 20;               /* ← CHANGE THIS */
+  --list-step: calc(360deg / var(--list-cycle));
+}
+
+
+ul li:nth-child(10n + 1)  a,
+ol li:nth-child(10n + 1)  a { color: hsl(calc(var(--list-hue-start) + 0 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 2)  a,
+ol li:nth-child(10n + 2)  a { color: hsl(calc(var(--list-hue-start) + 1 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 3)  a,
+ol li:nth-child(10n + 3)  a { color: hsl(calc(var(--list-hue-start) + 2 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 4)  a,
+ol li:nth-child(10n + 4)  a { color: hsl(calc(var(--list-hue-start) + 3 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 5)  a,
+ol li:nth-child(10n + 5)  a { color: hsl(calc(var(--list-hue-start) + 4 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 6)  a,
+ol li:nth-child(10n + 6)  a { color: hsl(calc(var(--list-hue-start) + 5 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 7)  a,
+ol li:nth-child(10n + 7)  a { color: hsl(calc(var(--list-hue-start) + 6 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 8)  a,
+ol li:nth-child(10n + 8)  a { color: hsl(calc(var(--list-hue-start) + 7 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 9)  a,
+ol li:nth-child(10n + 9)  a { color: hsl(calc(var(--list-hue-start) + 8 * var(--list-step)), var(--list-sat), var(--list-light)); }
+
+ul li:nth-child(10n + 10) a,
+ol li:nth-child(10n + 10) a { color: hsl(calc(var(--list-hue-start) + 9 * var(--list-step)), var(--list-sat), var(--list-light)); }
