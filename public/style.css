@@ -257,3 +257,23 @@ li a:focus-visible::after {
   filter: brightness(1.25);
 }
 
+
+
+main {
+  max-width: 37.5rem;
+  margin: 14vh auto 0;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+/* only add side padding on small screens */
+@media (max-width: 42rem) {
+  main {
+    padding-inline: 1.25rem;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.75rem;
+  }
+}
