@@ -1,0 +1,3063 @@
+Skip to main content <#__docusaurus_skipToContent_fallback>
+6962 Logo
+*6962 Technical Wiki
+
+* <https://6962-technical-wiki.vercel.app/>Docs <https://6962-technical-
+wiki.vercel.app/paper>
+
+  * Capstone Paper <https://6962-technical-wiki.vercel.app/paper>
+  * Control Theory <https://6962-technical-wiki.vercel.app/>
+  * Sensors <https://6962-technical-wiki.vercel.app/sensors>
+  * Simulation <https://6962-technical-wiki.vercel.app/simulation>
+  * Swerve Drive <https://6962-technical-wiki.vercel.app/swerve-drive>
+  * Telemetry <https://6962-technical-wiki.vercel.app/telemetry>
+
+  * <https://6962-technical-wiki.vercel.app/>
+  * Capstone Paper
+
+On this page
+
+
+  Capstone Paper
+
+
+  Distilling Advanced Programming
+  Principles For FRC
+
+
+    A Capstone Paper
+
+Written by Logan MacAskill
+
+
+    Intro​ <#intro>
+
+The FIRST Robotics Competition is the ultimate robotics showdown for
+high-school students worldwide that throws them headfirst into the deep
+end of STEM. Since 1989, this competition has been the breeding ground
+for innovation, collaboration, and real-world problem-solving in a form
+similar to a sport, but for robotics.
+
+Programming is one of the core skills applied in FRC, it gives these
+robots life and smarts, but only as smart as the programmer who coded
+it. With robotics programming comes many advanced and important
+principles that aren't seen elsewhere, and are game-changing in the face
+of FRC. Through this project, I aimed to dive deeper into some of these
+principles, and conceive a way to solidify this knowledge for future
+seasons to come.
+
+
+    Research Question​ <#research-question>
+
+It simply comes down to: “What are the key programming principles in
+robotics and how can they be effectively taught to the team?” This
+question has two parts, the research/experience for understanding many
+of these important and advanced programming principles, and the research
+into finding the best way to impart this knowledge onto the team.
+
+
+    Sources​ <#sources>
+
+I already know a lot about robotics, specifically software, but for this
+project, I wanted to dive deeper and explore the most advanced and
+powerful techniques to learn and bestow upon the team. In my research, I
+found that a lot of the existing literature is hard to find, and quite
+scattered. This requires a deep understanding of the topic and
+prerequisite knowledge to understand the literature. This is a hard
+barrier for entry for a lot of newer students, and a lot of programmers
+end up falling back to trial and error to learn these difficult
+concepts. For this project, I searched the web for the best sources of
+information, and have consolidated it into one cohesive wiki. Here are
+some of my most important sources:
+
+  *
+
+    Controls Engineering in the FIRST Robotics Competition (Graduate-
+    level control theory for high schoolers, by Tyler Veness) <https://
+    file.tavsys.net/control/controls-engineering-in-frc.pdf>
+    A very detailed and in-depth paper (300+ pages) explaining one of
+    the most important robotics principles, Control Theory, and all the
+    math behind it. This is the theory behind making mechanical systems
+    function in a controlled, predictable, and repeatable way. This may
+    seem simple in principle, but in reality it quickly becomes very
+    complicated. An intuitive example of this is when balancing a pencil
+    on your finger. First of all, you need your eyes; a way to measure
+    the pencil’s state. This allows you to react when the state is
+    unfavorable. This alone is not enough, since with just this, you’d
+    only move your hand after the pencil starts falling. The real power
+    comes from your brain's ability to predict the future state of the
+    pencil. This is called a “feedforward controller”. Your brain models
+    the system and how it reacts, so it intuitively knows that the
+    pencil will continue to fall when it's tipped to the side. These two
+    principles provide the foundation for control theory and how to
+    actuate complex mechanisms.
+
+  *
+
+    2015 FIRST World Championships Conference - Motion Planning &
+    Control in FRC <https://www.youtube.com/watch?v=8319J1BEHwM>
+    An hour-long recorded presentation on motion planning and control
+    for FRC. Motion planning is the process of harnessing control theory
+    to create a trajectory for the robot to follow. It can get very
+    complicated, and is very important, especially for the Autonomous
+    Period during the first 15 seconds of the match.
+
+  *
+
+    Citrus Circuits 2016 Fall Workshops - Motor Sizing <https://
+    www.youtube.com/watch?v=U4pgviiEwLg>
+    An hour-long video on how to pick the right size of motor and
+    gearbox for any application and goes in-depth into the math behind
+    motor curves, torque, voltage, and current
+
+  *
+
+    Whitepaper: Swerve Drive Skew and Second Order Kinematics <https://
+    www.chiefdelphi.com/t/whitepaper-swerve-drive-skew-and-second-order-
+    kinematics/416964>
+    A paper on the skewing that is noticeable when translating and
+    rotating simultaneously with swerve drive and the math behind
+    quantizing the drive states to compensate for this.
+
+  *
+
+    REV Robotics NEO Brushless Motor - Locked-rotor Testing <https://
+    www.revrobotics.com/neo-brushless-motor-locked-rotor-testing/>
+    Motor failure and temperature testing for keeping safe current
+    limits in software to prevent burnouts.
+
+  *
+
+    State Space Physics Simulation <https://docs.wpilib.org/en/stable/
+    docs/software/wpilib-tools/robot-simulation/physics-sim.html>
+    How to simulate motors, encoders, gyroscopes, arms, mechanical
+    systems, elevators, and more in a virtual simulated environment.
+    This allows code testing away from the robot, which drastically
+    reduces bugs and improves development time.
+
+  *
+
+    Swerve Drive Odometry <https://docs.wpilib.org/en/stable/docs/
+    software/kinematics-and-odometry/swerve-drive-odometry.html>
+    An odometer is a system that measures where a given object is in
+    space. Your car has one to measure how far you’ve driven. For swerve
+    drive, it's a little more complicated, and there is a bunch of math
+    behind fusing all the data regarding speed and direction of each
+    wheel into an accurate position on the field. This explains most of
+    that.
+
+  *
+
+    State Space Kalman Filters <https://docs.wpilib.org/en/stable/docs/
+    software/advanced-controls/state-space/state-space-pose-estimators.html>
+    Kalman filters are a way to fuse many different metrics that may be
+    inaccurate, imprecise, or noisy into one very accurate reading. This
+    involves modeling your system and simulating the relationships
+    between the inputs and outputs.
+
+  *
+
+    Path Planning and Ramsete Controllers <https://docs.wpilib.org/en/
+    stable/docs/software/pathplanning/index.html>
+    Path planning is the process of defining a path on the field and
+    getting the robot to follow it as accurately as possible. Because of
+    outside factors, you must use a pose estimator or odometer to
+    account for errors and compensate on the fly. There is also a
+    variety of algorithms for creating a spline from points that
+    preserve acceleration and result in a smooth, optimized motion. The
+    most common algorithm used in this case is Bezier Curves.
+
+  *
+
+    Pathplanner Library <https://github.com/mjansen4857/pathplanner>
+    Pathplanner is an alternative to the built-in WPILib PathWeaver that
+    introduces better support for swerve drive.
+
+  *
+
+    Docusaurus <https://docusaurus.io/>
+    The final platform I’ve decided to use. It’s completely free and
+    open source, looks great, has collaboration built in, and is
+    intended to be published to a website. Exactly what I’ve been
+    looking for all this time.
+
+
+    Methodology​ <#methodology>
+
+Going about this project, the method of effectively passing down this
+knowledge to the robotics team must be determined. Initially, teaching a
+class comes to mind. By leading a course to actively teach members of
+the team through workshops and hand-on experiences, these important
+techniques and practices could be learned in a short time. This has a
+major problem though: legacy. By teaching only a single class, the
+impact this project has for years to come would be limited. Unless
+others are willing to continue the course, the knowledge would cease to
+spread after my graduation.
+
+A practical solution to this problem is imparting this knowledge on a
+lasting accessible resource, like a website. This way those who want to
+learn many years later can reference a simple website and learn easily.
+An easy way to blend teaching with a website is to host a public set of
+slides, and record a walkthrough of them all. This works for simple
+topics, but falls short when experienced team members want to single out
+a single topic. They would have to flip through all the slides or scrub
+through hours of video just to find the topic that interests them. I
+spent some time exploring SliDev <https://sli.dev/>, but eventually
+pivoted for this reason.
+
+Finally, the tried and true approach: a wiki. One of the biggest sources
+of information on the internet is Wikipedia, and their layout allows for
+easy editing and easy navigation for those who are looking for specific
+topics. One of the most popular ways to structure a wiki-style
+information base is with Obsidian <https://obsidian.md/>. Obsidian is a
+markdown style information-base tool that looks great and feature rich.
+Markdown in particular is very powerful for wikis because it's a way to
+format plain-text into readable and beautiful websites. This is possible
+from simple rules that allow for special formatting inside a
+standard .md files, allowing for quickly creating content without
+spending time on formatting and other trivial problems.
+
+Obsidian is great, however it lacks support for hosting on a custom
+website for free. This aspect is crucial to the product as it needs to
+live somewhere accessible and stay there indefinitely. Again, I spend a
+great deal of time creating content using Obsidian, but eventually
+realized this problem and started looking for alternatives. The final
+platform I decided to use was Docusaurus <https://docusaurus.io/>. It's
+like Obsidian, but is designed for websites from the ground up. It's
+open-source and completely free, so I dove right in. I spend a lot of
+time customizing it for my needs, changing the layout, formatting, and
+theme. Most of this is documented on their site, using Docusaurus!
+Anyway, after I had the website set up, I needed to create the content.
+
+The past few months I had spend doing heaps of research and
+experimentation of many of the most important software practices for FRC
+and robotics in general. A lot of this came out of the research needed
+for Swerve Drive, a project I led over the summer. Swerve Drive combines
+complicated mechanical systems with software, and requires in-depth
+knowledge of control theory, sensors, and much more to even get working.
+This provided a great opportunity to do research and apply my findings,
+actively helping the team reach new heights.
+
+On top of this research derived from hands-on application, I also dove
+into many of the resources that other teams have, and learned from them.
+Not only do some of these teams have really great resources, they also
+structure it in a convenient way. I embraced this moving forward for how
+I structure my wiki. Before looking at some of these resources, I was
+under the impression that having dozens of pages all with very specific
+knowledge linked to each other was the way to go. That way people can
+look for the specific thing they want to learn about, but I soon learned
+that information structured in such a way can be overwhelming. Having
+dozens of pages to sift through and understand is much harder than
+having only a few that cover complicated concepts step-by-step.
+Realizing this, I split my wiki into 6 parts:
+
+ 1. Control Theory
+ 2. Sensors
+ 3. Swerve Drive
+ 4. Telemetry
+ 5. Simulation
+
+Dividing it this way gives learners a way to single out what they want
+to learn, but also go through step-by-step all the knowledge at once
+without backtracking too much.
+
+
+    Acquired Knowledge & Literature Review​ <#acquired-knowledge--
+    literature-review>
+
+
+    Part 1​ <#part-1>
+
+
+      Control Theory
+
+    Control theory is a major part of robotics and harnesses powerful
+    techniques that allow for precise and controlled mechanical
+    actuation. If you have a mechanism, and you wish to have it reach a
+    desired state, you need control theory in some way or another.
+
+    Pivoting arm? Rotating turret? Spinning flywheel? Linear elevator?
+    All of these mechanisms require knowledge of control theory to
+    function correctly.
+
+
+        So what is it?​ <#so-what-is-it>
+
+    Simply put, control theory is a way of reading the current state of
+    a mechanism with a sensor and then deciding how to run a motor to
+    achieve the target state.
+
+    A Control system usually involves the following components:
+
+     1.
+
+        *Reference:* Desired behavior or final condition you want the
+        system to achieve. Otherwise known as the target state or the
+        setpoint.
+
+     2.
+
+        *Plant:* The system that you want to control.
+
+     3.
+
+        *Controller:* The device or algorithm that decides the system's
+        output based on the reference.
+
+     4.
+
+        *Sensor:* Measures the current state of the plant.
+
+     5.
+
+        *Feedback:* Comparison of the plant's current state to the
+        reference, which then alters the system to help it get closer to
+        the reference.
+
+
+        Let's try an example.​ <#lets-try-an-example>
+
+    Assume we have an elevator and a sensor that magically tells us how
+    many meters along the track the elevator is currently sitting.
+    Currently, it's reading 2 meters, but we want to get to 10 meters.
+    This 10-meter target is the *Reference*. Okay, so what do you do?
+    You move up, right? So you tell the motor to run at full speed, and
+    eventually, it reaches 10 meters and stops. This is what that logic
+    would look like:
+
+    |// Calculates the power (-1.0 - 1.0) sent to the motor 
+    // given the current measurement and target setpoint
+    public double calculate(double measurement, double setpoint) {
+      if (setpoint < measurement) return -1.0;
+      if (setpoint > measurement) return 1.0;
+      return 0.0;
+    }
+
+    |
+
+    In an ideal world, this would work great. But we assume a few things
+    that aren't true in the real world:
+
+     1.
+
+        Sensor readings aren't instant and perfectly precise
+
+     2.
+
+        Motor commands aren't instant
+
+     3.
+
+        Mechanisms have inertia
+
+     4.
+
+        Our software can only run so many times a second
+
+    Because of this oversight, our mechanism will likely overshoot its
+    target, attempt to compensate, and undershoot, repeating this cycle
+    forever. This is called an *oscillation*. The system will
+    *oscillate* around its target state but never fully stop at it.
+
+    So what can we do?
+
+    One simple fix is to add some tolerance. Our logic only allows the
+    motor to stop if the measurement reads EXACTLY what our target state
+    is. With this fix, the motor will stop when its "close enough",
+    reducing the likelihood that it skips over the setpoint.
+
+    |// Calculates the power (-1.0 - 1.0) sent to the motor 
+    // given the current measurement and target setpoint
+    public double calculate(double measurement, double setpoint, double tolerance) {
+      if (setpoint < measurement - tolerance) return -1.0;
+      if (setpoint > measurement + tolerance) return 1.0;
+      return 0.0;
+    }
+
+    |
+
+    Congratulations! We've just made a *Bang-Bang Controller*! This is
+    the most simple of all control system algorithms and has many flaws.
+
+
+        A new idea.​ <#a-new-idea>
+
+    The primary problem with Bang-Bang Controllers is that they have no
+    sense of motor speed, and maximize the output power in any
+    situation. This is a problem because you get very jerky and
+    unpredictable movement, and we often overshoot our target state,
+    requiring a lower tolerance than we'd like.
+
+    A simple solution to this would be to slow down the motor speed as
+    we get closer to our setpoint, something like this:
+
+    |// Calculates the power (-1.0 - 1.0) sent to the motor 
+    // given the current measurement and target setpoint
+    public double calculate(double measurement, double setpoint) {
+      double error = measurement - setpoint;
+      return error;
+    }
+
+    |
+
+    This takes the error (measurement - setpoint) and uses that as the
+    motor power. If the error is small, the motor will run slower. If
+    the error is negative, the motor will run backward.
+
+    This works in some cases, but depending on the unit of measurement,
+    we get vastly different results. For example, if the measurement and
+    setpoint are measured in motor rotations, the motor will be given
+    full power only a single rotation away from the setpoint,
+    essentially turning this into a Bang-Bang Controller again. The
+    opposite is true as well. Given a really large unit, you end up with
+    the motor ramping down too early, resulting in a less-than-optimal
+    response time.
+
+
+        Proportional Term​ <#proportional-term>
+
+    To compensate for different types of systems with different units
+    and different magnitudes of speeds and inertia, we introduce a
+    *Proportional Term*. By /term/, I just mean an additional parameter
+    that decides how this control system behaves.
+
+    This term acts as a scaling factor for the error, simply multiplying
+    the error by the term results in the output motor power, like so:
+
+    |// Calculates the power (-1.0 - 1.0) sent to the motor 
+    // given the current measurement and target setpoint
+    public double calculate(double measurement, double setpoint, double kP) {
+      double error = measurement - setpoint;
+      return error * kP;
+    }
+
+    |
+
+    This acts as a tuning parameter to adjust the system's
+    responsiveness. If the error is large, the result of the
+    multiplication by Kp is also large, resulting in a large adjustment
+    and faster approach towards the setpoint. If the error is small, the
+    response is less intense, allowing the system to approach the
+    setpoint more gently with less chance of overshooting.
+
+    However, a P controller alone can still fall short in two main
+    scenarios:
+
+     1.
+
+        *Steady-state error*: In some circumstances, a proportional
+        controller will still have a residual error at steady state,
+        meaning that the system doesn't perfectly reach the target. This
+        is due to the fact that as the error decreases, the control
+        action decreases proportionally and may not be enough to
+        overcome system disturbances or friction.
+
+     2.
+
+        *Overshoot*: While the proportional controller reduces the
+        chances of overshooting compared to the previous controllers, it
+        does not entirely eliminate it. Large values of Kp, while
+        responsive, increase the likelihood of overshooting the setpoint.
+
+
+        Derivative and Integral Term​ <#derivative-and-integral-term>
+
+    To compensate for overshoot, we can introduce a new term, the
+    derivative term. This term uses the rate of change (slope) of the
+    error to compensate for the predicted future error. You can imagine
+    this as a "damping" factor, which smooths out quick changes in the
+    error, preventing overshoots. Make this term too high though, and
+    you end up with too much damping, resulting in a controller that
+    takes too long to reach the setpoint.
+
+    The math behind this term gets a little complicated, so we'll move
+    over to using the existing PIDController <https://docs.wpilib.org/
+    en/stable/docs/software/advanced-controls/controllers/
+    pidcontroller.html> class that's part of the WPILib library that
+    handles the math for us.
+
+    The final term is the Integral term, which uses the integral of the
+    error to compensate for the past. This term is rarely used because
+    of how unpredictable it may be, as it accumulates over time, and can
+    grow quickly.
+
+
+        All together​ <#all-together>
+
+    *P* /*(Proportion)*/: Compensates based on the present
+    *I* /*(Integral)*/: Compensates based on the past
+    *D* /*(Derivative)*/: Compensates based on the future
+
+
+        Velocity Control​ <#velocity-control>
+
+    This all works great for position control (elevators, arms, etc) but
+    what about velocity control?
+
+    Velocity control is very important, arguably as important than
+    position control, but just wont work with a simple PID controller.
+    This is because PID controllers assume that with an output of zero,
+    the state will stay the same, but if our desired state is in units
+    of velocity, an output of zero will always bring us back to zero
+    velocity, taking us away from our desired state. The best way to
+    combat this is to use Feedforward Control.
+
+
+        Feedforward Control​ <#feedforward-control>
+
+    Feedforward control is a mechanism that improves the performance of
+    our control system based on the predictable behaviors or
+    disturbances in the controlled plant. Unlike the PID controllers
+    that we've discussed, which rely on feedback (past behavior),
+    feedforward control uses a model of the plant to predict its future
+    behavior.
+
+    Imagine you are driving on a highway, and you see a hill up ahead.
+    You could wait until the car starts to slow down, then step on the
+    gas (this would be feedback, like a PID controller). Or, knowing
+    that the hill will slow down the car, you could give it more gas in
+    advance to maintain the same speed. This proactive approach is how
+    feedforward control works.
+
+    Applying this to velocity control, we can use a model of our motor
+    (often provided by the motor manufacturer) to predict the power
+    needed to reach a particular speed and add that to our PID output.
+
+    |public double calculate(double measurement, double setpoint, double kP, double kF) {
+      double error = measurement - setpoint;
+      double feedforward = kF * setpoint;
+      return error * kP + feedforward;
+    }
+
+    |
+
+    In this example, |kF| is a new term, the Feedforward Term. This term
+    directly scales from the setpoint, so if we have a setpoint of 2000
+    RPM (rotations per minute) for instance, it calculates the power
+    needed for that desired speed. So, instead of begging the system to
+    go faster with a higher error and higher ﻿kP term, we tell it
+    upfront the power it needs thereby making it more efficient and
+    reducing error.
+
+    To obtain the correct |kF| term for the given scenario we,
+    unfortunately, need to do some experimenting. The easiest method is
+    to run your motor at full power (1.0), measure the resulting speed,
+    and take the reciprocal of this. This should give you a good
+    starting point for |kF|.
+
+
+        Additional Feedforward Term​ <#additional-feedforward-term>
+
+    While using |kF| will get you quite far, sometimes an additional
+    term is required, the |kS| term. This term is to overcome the
+    friction in the system that might prevent the motor from turning in
+    low velocity situations. For example, if we try to run a motor at 1%
+    speed, and it's rigged to a gearbox, the friction of the gears will
+    likely prevent it from moving at all. This is where the |kS| term
+    comes in. When adding a small |kS| term, that value is added to the
+    output to overcome the friction in the system.
+
+
+        Using WPILib​ <#using-wpilib>
+
+    This is what all of this looks like using WPILib:
+
+    |// Define MOTOR_ID, kP, kI, kD, kS, kV
+
+    CANSparkMax motor;
+    RelativeEncoder encoder; // Read the docs on sensors if you want to understand encoders
+    PIDController controller;
+    SimpleMotorFeedforward feedforward;
+
+    motor = new CANSparkMax(MOTOR_ID);
+    encoder = motor.getEncoder();
+    controller = new PIDController(
+      kP, 
+      kI, 
+      kD
+    );
+    feedforward = new SimpleMotorFeedforward(
+      kS,
+      kV
+    );
+
+    public void runVelocityControl(double targetVelocity) {
+      motor.set(
+        feedforward.calculate(targetVelocity) + 
+        controller.calculate(encoder.getVelocity(), targetVelocity)
+      );
+    }
+
+    public void runPositionControl(double targetPosition) {
+      motor.set(controller.calculate(encoder.getPosition(), targetPosition));
+    }
+
+    |
+
+
+        Advanced Control Theory​ <#advanced-control-theory>
+
+    More advanced algorithms such as Kalman Filters and Trapazoidal
+    Profiles are very useful, and documented here: https://
+    docs.wpilib.org/en/2022/docs/software/advanced-controls/index.html
+    <https://docs.wpilib.org/en/2022/docs/software/advanced-controls/
+    index.html>
+
+
+    Part 2​ <#part-2>
+
+
+      Sensors
+
+    Sensors are at the heart of most adaptive robotics software. Without
+    it, the robot is in the dark, and cannot employ efficient control.
+
+
+        Limit Switches​ <#limit-switches>
+
+    The most basic form of sensor, with two states, on or off. This is
+    essentially a glorified button thats activated when a mechanism hits
+    its limits. These use the DIO inputs on the RoboRIO and are used to
+    prevent a mechanism from surpassing its mechanical limits and
+    breaking. They can also be used to zero a measured position. You
+    initialize this with the |new DigitalInput(DIO_INPUT)| constructor.
+
+
+        Relative Encoders​ <#relative-encoders>
+
+    Another basic form of sensor, that instead reads the number of
+    rotations of a motor shaft. On boot, this value is always zero, and
+    increases as the motor spins counterclockwise and decreases as the
+    motor spins clockwise. This can be used with a conversion factor to
+    achieve the desired unit. For example, if I have an elevator, I can
+    use the gear ratio and the pulley size to calculate the meters the
+    elevator has traveled rather than the number of motor rotations.
+    Most brushless motors have a built-in relative encoder that can be
+    obtained with:
+
+    |motor = new CANSparkMax(MOTOR_ID);
+    encoder = motor.getEncoder();
+
+    |
+
+    These encoders are great but come with a few problems, mainly that
+    they reset to zero every boot. This is great for systems where you
+    need to figure out the speed that a motor is running at with
+    |.getVelocity()| but not so great for accurate position readings
+    without needing to reset the physical position of the mechanism by
+    hand before every boot.
+
+
+        Absolute Encoders​ <#absolute-encoders>
+
+    Absolute encoders are the solution to this problem. If the encoder
+    never resets its position every boot, and retains its value
+    persistently, the encoder is an absolute encoder. These encoders are
+    great for pivoting mechanisms, where you need to know the exact
+    pivot angle for repeatable control. The only problem with these
+    sorts of encoders is that they only read values between 0-360
+    degrees, so you know where the shaft is rotated, but not how many times.
+
+    The solution to this is that absolute encoders aren't built into the
+    encoder, and are usually instead mounted to the pivoting mechanism
+    itself. Here's an example <https://www.revrobotics.com/rev-11-1271/
+    >. These are usually plugged into the DIO ports on the RoboRIO, and
+    you declare them with |new DutyCycleEncoder(DIO_INPUT)|
+
+
+    Part 3​ <#part-3>
+
+
+      Swerve Drive
+
+    Swerve Drive is arguably the most advanced drivetrain available for
+    FRC, and requires proper knowledge of control theory to pull off.
+    It's a great fusion of mechanical, electrical, and software engineering.
+
+
+        What is it?​ <#what-is-it>
+
+    Swerve drive uses two motors in each wheel, one to spin the wheel,
+    and one to change the wheel's direction. This allows for complicated
+    movements that are otherwise impossible with a standard drivetrain.
+    Strafing (moving in a direction independent of the direction of the
+    robot) becomes possible, and rotation while moving also becomes
+    possible. These movements are monumentally useful in almost any FRC
+    game challenge. For example, instead of designing a complicated
+    shooter mechanism that can pivot 360 degrees to shoot from anywhere,
+    you can instead just use swerve drive to rotate the whole robot.
+    This is what we did for the 2023 game challenge, Crescendo.
+
+
+        How does it work?​ <#how-does-it-work>
+
+    The magic of swerve drive comes down to it's "modules". Each module
+    resides in its corresponding corner of the robot's frame, and is
+    where the wheel and motors are mounted. The special component is the
+    custom gearbox that allows for the wheel to rotate along two
+    independent axis. Thankfully, this mechanism has already been
+    designed and is purchasable in kits, like this one: https://
+    www.swervedrivespecialties.com/products/mk4i-swerve-module <https://
+    www.swervedrivespecialties.com/products/mk4i-swerve-module>
+
+    Arguably, the easiest parts of Swerve Drive come from mechanical and
+    electrical, as most of that is outsourced. The tricky part comes
+    from the software. There are existing well maintained libraries out
+    there, notably YAGSL (Yet Another Generic Swerve Library) <https://
+    github.com/BroncBotz3481/YAGSL> but given how closely you need to
+    work with swerve drive to tune and accomplish complex behaviors, it
+    is important to fully understand the software you're running. For
+    this reason, I've decided to develop the software stack from the
+    ground up.
+
+
+        Modules first​ <#modules-first>
+
+    Before anything else, make sure you've read up on Control Theory and
+    Encoders. I'll assume you know that from here on out.
+
+    Lets start with the code for controlling a single Swerve Module.
+
+    |public class SwerveModule extends SubsystemBase {
+      private CANSparkMax driveMotor, steerMotor;                      // NEO motors controlled by CAN SparkMaxes
+      private RelativeEncoder driveEncoder, steerEncoder;              // Built-in relative encoders from NEOs
+      private CANcoder absoluteSteerEncoder;                           // Absolute encoder from CANCoder on steering shaft
+      private SparkPIDController drivePID, steerPID;                   // Built-in PID controllers running on-board SparkMaxes at 1000 Hz
+      private SwerveModuleState targetState = new SwerveModuleState(); // Target state for the module
+      private int corner;                                              // Corner of the robot the module is mounted on (0: front-left, 1: front-right, 2: back-left, 3: back-right)
+      private Rotation2d absoluteSteerDirection = new Rotation2d();    // Absolute direction of the steering motor, cached and taken from the CANCoder
+      private double driveVelocity = 0.0;                              // Velocity of the wheel, cached and taken from the NEO's built-in encoder
+      private double drivePosition = 0.0;                              // Meters the module has driven, cached and taken from the NEO's built-in encoder
+      private Rotation2d relativeSteerDirection = new Rotation2d();    // Relative direction of the steering motor, cached and taken from the NEO's built-in encoder
+      private boolean isCalibrating = false;                           // Whether the module is calibrating, used to prevent driving during calibration
+      
+      private SimpleMotorFeedforward driveFF = new SimpleMotorFeedforward( // Feedforward Controller for the drive motor
+        DRIVE_MOTOR_PROFILE.kS,
+        DRIVE_MOTOR_PROFILE.kV,
+        DRIVE_MOTOR_PROFILE.kA
+      );
+
+      public SwerveModule(MODULE_CONFIG config, int corner, String name) {
+        this.corner = corner;
+
+        driveMotor           = new CANSparkMax(config.CAN_DRIVE(), MotorType.kBrushless);
+        steerMotor           = new CANSparkMax(config.CAN_STEER(), MotorType.kBrushless);
+        absoluteSteerEncoder = new CANcoder(config.CAN_ENCODER());
+        steerEncoder         = steerMotor.getEncoder();
+        driveEncoder         = driveMotor.getEncoder();
+        drivePID             = driveMotor.getPIDController();
+        steerPID             = steerMotor.getPIDController();
+
+        /*
+         * Encoder offsets are determined by the physical mounting of the module on the robot.
+         * This means that modules can be swapped between corners without needing to recalibrate the encoders.
+         */
+        double encoderOffset = config.ENCODER_OFFSET();
+        switch (corner) {
+          case 0:
+            encoderOffset += 0.0;
+            break;
+          case 1:
+            encoderOffset += 0.25;
+            break;
+          case 2:
+            encoderOffset += -0.25;
+            break;
+          case 3:
+            encoderOffset += 0.5;
+            break;
+          default:
+        }
+        encoderOffset %= 2; // Normalize the offset to be between 0 and 2
+        encoderOffset = (encoderOffset > 1.0) ? encoderOffset - 2.0 : (encoderOffset < -1.0) ? encoderOffset + 2.0 : encoderOffset; // Normalize the offset to be between -1 and 1
+        
+        MagnetSensorConfigs magConfig = new MagnetSensorConfigs(); // CANCoder is configured with MagnetSensorConfigs object all at once
+        magConfig.withAbsoluteSensorRange(AbsoluteSensorRangeValue.Signed_PlusMinusHalf); // Absolute sensor range is set to -180 to 180 degrees, instead of 0 to 360
+        magConfig.withMagnetOffset(encoderOffset); // Magnet offset is set to the calculated encoder offset
+        BaseStatusSignal.setUpdateFrequencyForAll(50, absoluteSteerEncoder.getAbsolutePosition(), absoluteSteerEncoder.getFaultField(), absoluteSteerEncoder.getVersion()); // CANCoder is set to update at 50 Hz, and only give data we care about
+        absoluteSteerEncoder.optimizeBusUtilization(); // Apply bus frequency settings
+
+        /*
+         * Using custom logging tool, SparkMaxUtil, to configure and log the SparkMaxes and CANCoders.
+         * The drive motor is set to have a calculated current limit that prevents the wheel from slipping by preventing the motor
+         * from applying more torque than the friction of the wheel.
+         * The steer motor is set to coast mode, as it doesn't need to hold position when disabled. This also prevents tearing up the carpet.
+         */
+        SparkMaxUtil.configureAndLog(this, driveMotor, false, CANSparkMax.IdleMode.kBrake, PHYSICS.SLIPLESS_CURRENT_LIMIT, PHYSICS.SLIPLESS_CURRENT_LIMIT);
+        SparkMaxUtil.configureAndLog(this, steerMotor, true, CANSparkMax.IdleMode.kCoast);
+        SparkMaxUtil.configureEncoder(driveMotor, SWERVE_DRIVE.DRIVE_ENCODER_CONVERSION_FACTOR); // Configure the drive encoder to be in meters rather than rotations
+        SparkMaxUtil.configureEncoder(steerMotor, SWERVE_DRIVE.STEER_ENCODER_CONVERSION_FACTOR); // Configure the steer encoder to be in radians rather than rotations
+        SparkMaxUtil.configurePID(this, driveMotor, DRIVE_MOTOR_PROFILE.kP, DRIVE_MOTOR_PROFILE.kI, DRIVE_MOTOR_PROFILE.kD, 0.0, false);
+        SparkMaxUtil.configurePID(this, steerMotor, STEER_MOTOR_PROFILE.kP, STEER_MOTOR_PROFILE.kI, STEER_MOTOR_PROFILE.kD, 0.0, true); // Steer motor is continuous (-180 and 180 degrees wrap), so it needs to be configured as such
+        
+        // Save config and burn to flash
+        SparkMaxUtil.save(driveMotor);
+        SparkMaxUtil.save(steerMotor);
+        
+        // Reduce CAN bus utilization by only sending necessary data
+        SparkMaxUtil.configureCANStatusFrames(driveMotor, true, true);
+        SparkMaxUtil.configureCANStatusFrames(steerMotor, false, true);
+
+        // Set the steer encoder in the motor to the absolute position of the CANCoder
+        seedSteerEncoder();
+
+        // Log the module's data
+        String logPath = "module" + name + "/";
+        Logger.autoLog(this, logPath + "relativeSteerDirection",           () -> relativeSteerDirection.getDegrees());
+        Logger.autoLog(this, logPath + "absoluteSteerDirection",        () -> absoluteSteerDirection.getDegrees());
+
+        // Add status checks for the module
+        StatusChecks.addCheck(this, name + "canCoderHasFaults", () -> absoluteSteerEncoder.getFaultField().getValue() == 0);
+        StatusChecks.addCheck(this, name + "canCoderIsConnected", () -> absoluteSteerEncoder.getVersion().getValue() != 0);
+      }
+
+
+      public void periodic() {
+        /*
+         * Update the module's state variables with the latest data from the SparkMaxes and CANCoders.
+         * This is important because calling get() on the SparkMaxes and CANCoders is expensive, so we only want to do it once per loop.
+         */
+        relativeSteerDirection = Rotation2d.fromRadians(steerEncoder.getPosition());
+        absoluteSteerDirection = Rotation2d.fromRotations(absoluteSteerEncoder.getAbsolutePosition().getValue());
+        driveVelocity = driveEncoder.getVelocity();
+        drivePosition = driveEncoder.getPosition();
+
+        // Only drive the module if the system is enabled and the robot is not calibrating
+        if (!ENABLED_SYSTEMS.ENABLE_DRIVE) return;
+        if (isCalibrating) return;
+        drive(targetState);
+
+        // Stop motors if the battery voltage is too low
+        if (RobotContainer.getVoltage() < VOLTAGE_LADDER.SWERVE_DRIVE) stop();
+      }
+      
+      public void drive(SwerveModuleState state) {
+        double speedMetersPerSecond = state.speedMetersPerSecond;
+        double radians = state.angle.getRadians();
+        
+        // Slow down the drive motor when the steering angle is far from the target angle.
+        if (SWERVE_DRIVE.DO_ANGLE_ERROR_SPEED_REDUCTION) {
+          speedMetersPerSecond *= Math.cos(SwerveMath.angleDistance(radians, getMeasuredState().angle.getRadians()));
+        }
+        
+        // Using on-board SparkMax PID controllers to control the drive and steer motors. This allows for 1kHz closed loop control.
+        drivePID.setReference(
+          speedMetersPerSecond,
+          CANSparkMax.ControlType.kVelocity,
+          0,
+          driveFF.calculate(speedMetersPerSecond) // Add our own feedforward instead of using the SparkMax's built-in feedforward. This is because the built-in feedforward does not support the kS term.
+        );
+        steerPID.setReference(
+          radians,
+          CANSparkMax.ControlType.kPosition
+        );
+
+        // If the module is not moving, seed the steer encoder with the absolute position of the steer CANCoder
+        if (state.speedMetersPerSecond == 0 && Math.abs(getRelativeSteerDirection().minus(getAbsoluteSteerDirection()).getDegrees()) > 0.5) {
+          seedSteerEncoder();
+        }
+      }
+      
+      /**
+       * Sets the target state for the module to drive at.
+       * @param state target state
+       */
+      public void setTargetState(SwerveModuleState state) {
+        // Optimize the state to flip the steering angle if it is faster to go the other way. This ensures that the module always takes the shortest path to the target angle.
+        targetState = SwerveModuleState.optimize(state, getMeasuredState().angle);
+      }
+      
+      /**
+       * Stops the module by setting the target state to 0 speed and the current angle.
+       */
+      public void stop() {
+        targetState = new SwerveModuleState(0.0, getMeasuredState().angle);
+      }
+      
+      /**
+       * Seeds the position of the built-in relative encoder with the absolute position of the steer CANCoder.
+       * This is because the CANCoder polls at a lower rate than we'd like, so we essentially turn the relative encoder into an fast-updating absolute encoder.
+       * Also the built-in SparkMaxPIDControllers require a compatible encoder to run the faster 1kHz closed loop 
+       */
+      public void seedSteerEncoder() {
+        steerEncoder.setPosition(getAbsoluteSteerDirection().getRadians());
+      }
+
+      /**
+       * Gets the direction of the steering motor from the built-in relative encoder.
+       * @return relative direction of the steering motor
+       */
+      public Rotation2d getRelativeSteerDirection() {
+        return relativeSteerDirection;
+      }
+      
+      /**
+       * Gets the absolute direction of the steering motor from the CANCoder.
+       * @return absolute direction of the steering motor
+       */
+      private Rotation2d getAbsoluteSteerDirection() {
+        return absoluteSteerDirection;
+      }
+
+      /**
+       * Gets the target state for the module to drive at.
+       * @return target state
+       */
+      public SwerveModuleState getTargetState() {
+        return targetState;
+      }
+      
+      /**
+       * Gets the measured state of the module, which is the current velocity and angle of the module.
+       * @return measured state
+       */
+      public SwerveModuleState getMeasuredState() {
+        return new SwerveModuleState(driveVelocity, getAbsoluteSteerDirection());
+      }
+
+      /**
+       * Gets the position of the module, which is the distance the wheel has traveled and the angle of the module.
+       * @return module position
+       */
+      public SwerveModulePosition getModulePosition() {
+        return new SwerveModulePosition(drivePosition, getMeasuredState().angle);
+      }
+
+      /**
+       * Calculates the velocity of the wheel from the power applied to the motor.
+       * @param power power applied to the motor (-1.0, 1.0)
+       * @return velocity of the wheel in meters per second
+       */
+      public static double calcWheelVelocity(double power) {
+        return power * Constants.SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY;
+      }
+      
+      /**
+       * Gets the field-relative pose of the module.
+       * @param robotPose pose of the robot on the field
+       * @return field-relative pose of the module
+       */
+      public Pose2d getPose(Pose2d robotPose) {
+        Pose2d relativePose = new Pose2d();
+        if (corner == 0) relativePose = new Pose2d(
+          SWERVE_DRIVE.WHEELBASE / 2.0,
+          SWERVE_DRIVE.TRACKWIDTH / 2.0,
+          getMeasuredState().angle
+        );
+        if (corner == 1) relativePose = new Pose2d(
+          SWERVE_DRIVE.WHEELBASE / 2.0,
+          -SWERVE_DRIVE.TRACKWIDTH / 2.0,
+          getMeasuredState().angle
+        );
+        if (corner == 2) relativePose = new Pose2d(
+          -SWERVE_DRIVE.WHEELBASE / 2.0,
+          SWERVE_DRIVE.TRACKWIDTH / 2.0,
+          getMeasuredState().angle
+        );
+        if (corner == 3) relativePose = new Pose2d(
+          -SWERVE_DRIVE.WHEELBASE / 2.0,
+          -SWERVE_DRIVE.TRACKWIDTH / 2.0,
+          getMeasuredState().angle
+        );
+        return relativePose.relativeTo(new Pose2d(
+          new Translation2d(),
+          robotPose.getRotation().times(-1.0)
+        )).relativeTo( new Pose2d(
+          -robotPose.getX(),
+          -robotPose.getY(),
+          new Rotation2d()
+        ));
+      }
+    }
+
+    |
+
+
+          Basics first​ <#basics-first>
+
+    I know it looks like a lot, but I've added comments to almost
+    everything so hopefully things at least make a little bit more
+    sense. The basic principle is that there are two motors, and two PID
+    Controllers. Each PID Controller is configured separately, and tuned
+    for the purpose of either steering or driving. When driving, the |
+    setTargetState| method is called, telling the swerve module to
+    attempt to reach that state with the PID Controllers. Aside from
+    that, I also added a few more advanced modifications:
+
+
+          CAN Bus Utilization Optimizations​ <#can-bus-utilization-
+          optimizations>
+
+    The CAN bus is the way almost all data on the robot is sent, and
+    with swerve drive, there are 12 different devices all sending their
+    own data. This alone could potentially saturate the CAN bus with so
+    much data that it won't be able to handle many other subsystems, and
+    start dropping packets. This is very bad. To prevent this, I've
+    employed a few tactics to reduce the bus utilization. First though,
+    its important you understand how data is sent over the CAN bus.
+
+    Every device on the bus has an update rate, which is to say a rate
+    that their data is sent. Instead of a request and receive type of
+    interaction where the code asks for the readings on an encoder, the
+    encoder's data is sent periodically regardless if you actually need
+    it or not. This is great for making sure that there is little delay
+    in the code for getting data, but is sometimes awful for the
+    bandwidth on the CAN bus. Often times the devices are sending much
+    more data than is actually needed, and this is a problem. To address
+    this, you can change the update rate of different parts of the data
+    being sent. That's what is happening here:
+
+    |MagnetSensorConfigs magConfig = new MagnetSensorConfigs(); // CANCoder is configured with MagnetSensorConfigs object all at once
+    magConfig.withAbsoluteSensorRange(AbsoluteSensorRangeValue.Signed_PlusMinusHalf); // Absolute sensor range is set to -180 to 180 degrees, instead of 0 to 360
+    magConfig.withMagnetOffset(encoderOffset); // Magnet offset is set to the calculated encoder offset
+    BaseStatusSignal.setUpdateFrequencyForAll(50, absoluteSteerEncoder.getAbsolutePosition(), absoluteSteerEncoder.getFaultField(), absoluteSteerEncoder.getVersion()); // CANCoder is set to update at 50 Hz, and only give data we care about
+    absoluteSteerEncoder.optimizeBusUtilization(); // Apply bus frequency settings
+
+    // Reduce CAN bus utilization by only sending necessary data
+    SparkMaxUtil.configureCANStatusFrames(driveMotor, true, true);
+    SparkMaxUtil.configureCANStatusFrames(steerMotor, false, true);
+
+    |
+
+    Here, I've made sure the CANCoder only sends data for |
+    getAbsolutePosition|, |getFaultField|, and |getVersion|, and only 50
+    times a second. I've also made sure the steer encoder sends data on
+    it's position and ignores data on the velocity, temperature,
+    voltage, and current.
+
+    Finally, the last change I've made regards caching values. Each time
+    you fetch data on a sensor or any data over the CAN bus, it takes a
+    bit of time for it to get the value. I'm not entirely sure why this
+    is, as it's supposed to be cached, but this caused a few headaches
+    when we ran into loop overruns in the past. If in |
+    getMeasuredState|, we were to just call |
+    steerEncoder.getPosition()|, it would result in dozens of calls to
+    that position every loop, as the measured state is requested many
+    times. To prevent this, we just make sure to only call it once per
+    loop, and save it to a variable here to be reused later:
+
+    |/*
+    * Update the module's state variables with the latest data from the SparkMaxes and CANCoders.
+    * This is important because calling get() on the SparkMaxes and CANCoders is expensive, so we only want to do it once per loop.
+    */
+    relativeSteerDirection = Rotation2d.fromRadians(steerEncoder.getPosition());
+    absoluteSteerDirection = Rotation2d.fromRotations(absoluteSteerEncoder.getAbsolutePosition().getValue());
+    driveVelocity = driveEncoder.getVelocity();
+    drivePosition = driveEncoder.getPosition();
+
+    |
+
+
+          Motor Current Limiting​ <#motor-current-limiting>
+
+    Another thing to keep in mind with so many motors running at once,
+    is the strain on the battery. The battery can't expel an infinite
+    amount of energy at once, and the more current drawn from the
+    battery, the lower the voltage dips. This is called voltage sag.
+    Eventually, if the system draws too many amps at once, a brownout
+    occurs. This is when the voltage drops below 6.8V, and gets to the
+    point where the RoboRIO cannot function properly anymore. This
+    causes all systems on the robot to shut off, and can lead to many
+    nasty problems.
+
+    To combat this, we limit the amount of current each of our motors
+    can draw. By default the motors draw a max of 80 A each, so a total
+    of 650A at 12V, which is 7,800 W of power, much more than the
+    battery can handle. Actually, 80 A is far too much for the motor to
+    handle as well, and if under load, can cause the motor to fail and
+    destroy itself. You can read more about that here: https://
+    www.revrobotics.com/neo-brushless-motor-locked-rotor-testing/
+    <https://www.revrobotics.com/neo-brushless-motor-locked-rotor-testing/>
+
+    There are actually two types of current limits, "free", and "stall".
+    The free current limit is the limit applied while the motor is
+    spinning, while the stall current limit is applied while the motor
+    is attempting to spin, but is stationary. Usually the latter occurs
+    under a heavy load or when hitting a mechanical limit. This type of
+    current limit is the scariest, and has the highest chance of burning
+    out the motor. This is because the motor is expending a lot of
+    energy to try to move, but without any movement, the energy is
+    released as heat, slowly killing the motor. Usually a good rule of
+    thumb is to have a 40 A stall current limit, and 60 A free current
+    limit for NEOs
+
+    Our situation is unique though, as we can use the current limit to
+    our advantage. Even with an infinitely powerful motor, our robot can
+    only accelerate as fast as the friction between the carpet and the
+    wheels will allow, which is a calculable limit. But first, we must
+    understand what the current and voltage actually mean.
+
+    The current applied to a motor dictates it's torque. With more
+    current, the motor is able to move heavier loads. The voltage on the
+    other hand, dictates the speed of the motor. At 12V, the motor will
+    spin as fast as it can, but with voltage sag, the motor will be
+    unable to reach its top speed. Knowing the mass of the robot, the
+    friction on the ground, and a few key specs of the motor, we can
+    calculate the current limit that limits the motor's torque to drive
+    at max speed without breaking free of the carpet and slipping.
+
+    |public static final double SLIPLESS_ACCELERATION = 9.80 * FRICTION_COEFFICIENT;
+    public static final int SLIPLESS_CURRENT_LIMIT = (int) ((SLIPLESS_ACCELERATION * NEO.STATS.stallCurrentAmps * ROBOT_MASS * WHEEL_RADIUS) / (4.0 * DRIVE_MOTOR_GEARING * NEO.STATS.stallTorqueNewtonMeters));
+
+    |
+
+    This is extremely convenient because instead of experimentally
+    determining the current limit, and retesting any time the robot's
+    weight changes, we have a formula that works and dynamically adjusts
+    to the robot's weight and the surface that it's on.
+
+
+          Global Encoder Offsets​ <#global-encoder-offsets>
+
+    The way the absolute encoders (CANCoders) work is they read the
+    polarity of a magnet in the drive shaft of whatever is rotating. In
+    this case, its the steering axis, and there are small cylindrical
+    magnets in each module. These magnets rotate as the wheel changes
+    direction, allowing the encoder to know which direction the wheel is
+    pointed in at all times. Importantly though, the magnets initial
+    configuration is random, as they are just placed in the motor shaft
+    irrespective of the wheels position. To compensate for this, we use
+    encoder offsets.
+
+    Encoder offsets are measured values for how much to shift the
+    readings of the encoder by. For our case, we point the wheel in the
+    direction of zero degrees, measure what the encoder says and take
+    the negative of that as our offset. This way whenever we read values
+    from the CANCoder, it'll be accurate to the position of the wheel
+    rather than the random orientation of the magnet.
+
+    This works in theory, but in practice it can be annoying because
+    each module itself is rotated differently depending on which corner
+    of the chassis its mounted to. In our code, instead of dealing with
+    robot-relative encoder offsets, we have specific module-relative
+    offsets and add to them depending on which corner the module is
+    located in. This is what that looks like:
+
+    |/*
+     * Encoder offsets are determined by the physical mounting of the module on the robot.
+     * This means that modules can be swapped between corners without needing to recalibrate the encoders.
+     */
+    double encoderOffset = config.ENCODER_OFFSET();
+    switch (corner) {
+      case 0:
+        encoderOffset += 0.0;
+        break;
+      case 1:
+        encoderOffset += 0.25;
+        break;
+      case 2:
+        encoderOffset += -0.25;
+        break;
+      case 3:
+        encoderOffset += 0.5;
+        break;
+      default:
+    }
+    encoderOffset %= 2; // Normalize the offset to be between 0 and 2
+    encoderOffset = (encoderOffset > 1.0) ? encoderOffset - 2.0 : (encoderOffset < -1.0) ? encoderOffset + 2.0 : encoderOffset; // Normalize the offset to be between -1 and 1
+
+    |
+
+
+          Separate Feedforward Controller​ <#separate-feedforward-
+          controller>
+
+    The |SparkMaxPIDController| has a built-in feedforward controller,
+    but only supports the kF term, and doesn't support kS. It works
+    alright without it, but slow movements are hard without the kS term
+    because the motor power is too low to get the wheels to start
+    moving. For this reason, I've set the kF term for the built-in PID
+    controller to 0.0 and add a WPILib feedforward back in later:
+
+    |// Using on-board SparkMax PID controllers to control the drive and steer motors. This allows for 1kHz closed loop control.
+    drivePID.setReference(
+        speedMetersPerSecond,
+        CANSparkMax.ControlType.kVelocity,
+        0,
+        driveFF.calculate(speedMetersPerSecond) // Add our own feedforward instead of using the SparkMax's built-in feedforward. This is because the built-in feedforward does not support the kS term.
+    );
+
+    |
+
+
+          Angle Error Speed Reduction​ <#angle-error-speed-reduction>
+
+    One potential problem is that it can take a while for the PID
+    controller for steering to finally reach it's setpoint, and if the
+    controller for driving achieves it's velocity setpoint before the
+    steering controller does, the whole drivetrain can travel in a
+    totally different direction than intended. This can be mitigated by
+    reducing the speed of the drive motor based on how far the steering
+    controller is away from it's setpoint:
+
+    |// Slow down the drive motor when the steering angle is far from the target angle.
+    if (SWERVE_DRIVE.DO_ANGLE_ERROR_SPEED_REDUCTION) {
+        speedMetersPerSecond *= Math.cos(SwerveMath.angleDistance(radians, getMeasuredState().angle.getRadians()));
+    }
+
+    |
+
+
+          Steer Encoder Seeding​ <#steer-encoder-seeding>
+
+    There are two encoders used for steering, the absolute CANCoder, and
+    the relative built-in NEO encoder. Both of these work, but only the
+    relative encoder is used for the onboard SparkMAX PID loop. This is
+    a problem, because we have the absolute encoder for a reason, and if
+    we cant use it with the PID controller, it's effectively useless.
+
+    A solution to this is to "seed" the relative encoder. This is done
+    by overriding the relative encoder's position with the data readout
+    from the absolute encoder. This effectively converts the relative
+    encoder into an absolute encoder! This is what that looks like:
+
+    |/**
+     * Seeds the position of the built-in relative encoder with the absolute position of the steer CANCoder.
+     * This is because the CANCoder polls at a lower rate than we'd like, so we essentially turn the relative encoder into an fast-updating absolute encoder.
+     * Also the built-in SparkMaxPIDControllers require a compatible encoder to run the faster 1kHz closed loop 
+     */
+    public void seedSteerEncoder() {
+      steerEncoder.setPosition(getAbsoluteSteerDirection().getRadians());
+    }
+
+    |
+
+    We call this whenever the module is stationary:
+
+    |// If the module is not moving, seed the steer encoder with the absolute position of the steer CANCoder
+    if (state.speedMetersPerSecond == 0 && Math.abs(getRelativeSteerDirection().minus(getAbsoluteSteerDirection()).getDegrees()) > 0.5) {
+      seedSteerEncoder();
+    }
+
+    |
+
+
+        Swerve Drive Class​ <#swerve-drive-class>
+
+    Moving on, we need a SwerveDrive class that handles all four
+    SwerveModule objects. Here's what that looks like:
+
+    |public class SwerveDrive extends SubsystemBase {
+
+      // Swerve kinematics
+      public SwerveModule[] modules = new SwerveModule[SWERVE_DRIVE.MODULE_COUNT];
+      private SwerveDriveKinematics kinematics = getKinematics();
+      private CustomSwerveDrivePoseEstimator poseEstimator;
+      private static Field2d field = new Field2d(); // Field2d object for SmartDashboard widget
+      private ChassisSpeeds drivenChassisSpeeds = new ChassisSpeeds();
+      private SWERVE_DRIVE.MODULE_CONFIG[] equippedModules;
+      private SwerveDriveWheelPositions previousWheelPositions;
+      private Translation2d linearAcceleration;
+
+      // Gyro & rotation
+      private static AHRS gyro; // NAVX2-MXP Gyroscope
+      private Rotation2d gyroHeading = Rotation2d.fromDegrees(0.0);
+      private Rotation2d gyroOffset = SWERVE_DRIVE.STARTING_POSE.get().getRotation();
+      private Debouncer doneRotating = new Debouncer(0.5);
+      private double addedAlignmentAngularVelocity = 0.0;
+      private double angularAcceleration = 0.0;
+      private PIDController alignmentController = new PIDController(
+        SWERVE_DRIVE.ABSOLUTE_ROTATION_GAINS.kP,
+        SWERVE_DRIVE.ABSOLUTE_ROTATION_GAINS.kI,
+        SWERVE_DRIVE.ABSOLUTE_ROTATION_GAINS.kD
+      );
+
+      // Autonomous
+      private Supplier<Translation2d> rotationOverridePoint = null;
+      private Rotation2d rotationOverrideOffset = new Rotation2d();
+
+      // States
+      private boolean isAligning = false;
+      private boolean parked = false;
+      private boolean parkingDisabled = false;
+      private boolean isDriven = false;
+      private boolean gyroConnected = false;
+      
+      public SwerveDrive() {
+        // Create the serve module objects
+        equippedModules = SWERVE_DRIVE.IS_PROTOTYPE_CHASSIS ? SWERVE_DRIVE.EQUIPPED_MODULES_PROTOTYPE : SWERVE_DRIVE.EQUIPPED_MODULES_COMPETITION;
+        int corner = 0;
+        for (SWERVE_DRIVE.MODULE_CONFIG config : equippedModules) {
+          String name = SWERVE_DRIVE.MODULE_NAMES[corner];
+          if (RobotBase.isSimulation()) { // Use sim modules in simulation
+            modules[corner] = new SwerveModuleSim(config, corner, name);
+          } else {
+            modules[corner] = new SwerveModule(config, corner, name);
+          }
+          corner++;
+        }
+
+        // Set up pose estimator and rotation controller
+        poseEstimator = new CustomSwerveDrivePoseEstimator(
+          kinematics,
+          SWERVE_DRIVE.STARTING_POSE.get().getRotation(),
+          getModulePositions().positions,
+          SWERVE_DRIVE.STARTING_POSE.get(),
+          VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(2)),
+          VecBuilder.fill(1.0, 1.0, Units.degreesToRadians(30))
+        );
+
+        previousWheelPositions = getModulePositions(); // Used for twist calculations for odometry
+        alignmentController.enableContinuousInput(-Math.PI, Math.PI); // Set the controller to be continuous
+        alignmentController.setTolerance(SWERVE_DRIVE.ABSOLUTE_ROTATION_GAINS.TOLERANCE.getRadians());
+        
+        // If possible, connect to the gyroscope
+        try {
+          gyro = new AHRS(SPI.Port.kMXP);
+        } catch (RuntimeException ex) {
+          DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), false);
+        }
+
+        // Gyro takes a little while to calibrate, so we wait a second before setting the offset
+        new Thread(() -> {
+          try {
+            Thread.sleep(1000);
+            gyroOffset = gyroOffset.minus(gyro.getRotation2d());
+          } catch (Exception e) {}
+        }).start();
+        
+        
+        // Log data
+        SmartDashboard.putData("Field", field);
+        Logger.autoLog(this, "pose", () -> this.getPose());
+        Logger.autoLog(this, "measuredHeading", () -> this.getHeading().getDegrees());
+        Logger.autoLog(this, "targetHeading", () -> Units.radiansToDegrees(alignmentController.getSetpoint()));
+        Logger.autoLog(this, "targetStates", () -> getTargetModuleStates());
+        Logger.autoLog(this, "measuredStates", () -> getMeasuredModuleStates());
+        Logger.autoLog(this, "modulePositions", () -> getModulePositions());
+        Logger.autoLog(this, "gyroAcceleration", () -> Math.hypot(gyro.getWorldLinearAccelX(), gyro.getWorldLinearAccelY()));
+        Logger.autoLog(this, "gyroVelocity", () -> Math.hypot(gyro.getVelocityX(), gyro.getVelocityY()));
+        Logger.autoLog(this, "commandedLinearAcceleration", () -> linearAcceleration.getNorm());
+        Logger.autoLog(this, "commandedLinearVelocity", () -> Math.hypot(getDrivenChassisSpeeds().vxMetersPerSecond, getDrivenChassisSpeeds().vyMetersPerSecond));
+        Logger.autoLog(this, "commandedAngularAcceleration", () -> angularAcceleration);
+        Logger.autoLog(this, "commandedAngularVelocity", () -> getDrivenChassisSpeeds().omegaRadiansPerSecond);
+        Logger.autoLog(this, "measuredAngularVelocity", () -> getMeasuredChassisSpeeds().omegaRadiansPerSecond);
+        Logger.autoLog(this, "measuredLinearVelocity", () -> Math.hypot(getMeasuredChassisSpeeds().vxMetersPerSecond, getMeasuredChassisSpeeds().vyMetersPerSecond));
+        Logger.autoLog(this, "gyroIsCalibrating", () -> gyro.isCalibrating());
+        Logger.autoLog(this, "gyroIsConnected", () -> gyro.isConnected());
+        Logger.autoLog(this, "gyroRawDegrees", () -> gyro.getRotation2d().getDegrees());
+        StatusChecks.addCheck(this, "isGyroConnected", gyro::isConnected);
+
+        // Path planner setup
+        AutoBuilder.configureHolonomic(
+          this::getPose, // Robot pose supplier
+          this::resetPose, // Method to reset odometry (will be called if your auto has a starting pose)
+          this::getMeasuredChassisSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+          this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
+          new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
+            new PIDConstants(SWERVE_DRIVE.AUTONOMOUS.TRANSLATION_GAINS.kP, SWERVE_DRIVE.AUTONOMOUS.TRANSLATION_GAINS.kI, SWERVE_DRIVE.AUTONOMOUS.TRANSLATION_GAINS.kD), // Translation PID constants
+            new PIDConstants(SWERVE_DRIVE.AUTONOMOUS.   ROTATION_GAINS.kP, SWERVE_DRIVE.AUTONOMOUS.   ROTATION_GAINS.kI, SWERVE_DRIVE.AUTONOMOUS.   ROTATION_GAINS.kD), // Rotation PID constants
+            SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY, // Max module speed, in m/s
+            SWERVE_DRIVE.PHYSICS.DRIVE_RADIUS, // Drive base radius in meters. Distance from robot center to furthest module.
+            new ReplanningConfig(true, true) // Default path replanning config. See the API for the options here
+          ),
+          () -> false,
+          this // Reference to this subsystem to set requirements
+        );
+
+        // Logging callback for target robot pose
+        PathPlannerLogging.setLogTargetPoseCallback((pose) -> {
+            // Do whatever you want with the pose here
+            field.getObject("Target Pose").setPose(pose);
+        });
+
+        // Logging callback for the active path, this is sent as a list of poses
+        PathPlannerLogging.setLogActivePathCallback((poses) -> {
+            // Do whatever you want with the poses here
+            field.getObject("Active Path").setPoses(poses);
+        });
+      }
+
+      @Override
+      public void periodic() {
+        if (!ENABLED_SYSTEMS.ENABLE_DRIVE) return;
+        // If the robot is disabled, reset states and target heading
+        if (RobotState.isDisabled()) {
+          for (SwerveModule module : modules) {
+            module.seedSteerEncoder();
+          }
+          setTargetHeading(getHeading());
+          isAligning = false;
+          rotationOverridePoint = null;
+        }
+        
+        updateOdometry();
+
+        // Update field
+        FieldObject2d modulesObject = field.getObject("Swerve Modules");
+        Pose2d[] modulePoses = new Pose2d[SWERVE_DRIVE.MODULE_COUNT];
+        Pose2d robotPose = getPose();
+        int i = 0;
+        for (SwerveModule module : modules) {
+          modulePoses[i] = module.getPose(robotPose);
+          i++;
+        }
+        modulesObject.setPoses(modulePoses);
+        field.setRobotPose(getPose());
+        
+        // If drive calls are not being made, stop the robot
+        if (!isDriven) driveFieldRelative(0.0, 0.0, 0.0);
+        isDriven = false;
+      }
+
+      public void updateOdometry() {
+        Pose2d poseBefore = getPose();
+
+        // Math to use the swerve modules to calculate the robot's rotation if the gyro disconnects
+        SwerveDriveWheelPositions wheelPositions = getModulePositions();
+        Twist2d twist = kinematics.toTwist2d(previousWheelPositions, wheelPositions);
+        Pose2d newPose = getPose().exp(twist);
+        if (!gyroConnected && (gyro.isConnected() && !gyro.isCalibrating())) {
+          gyroOffset = gyroHeading.minus(gyro.getRotation2d());
+        }
+        gyroConnected = gyro.isConnected() && !gyro.isCalibrating();
+        if (gyroConnected && !RobotBase.isSimulation()) {
+          gyroHeading = gyro.getRotation2d();
+        } else {
+          gyroHeading = gyroHeading.plus(newPose.getRotation().minus(getPose().getRotation()));
+        }
+
+        poseEstimator.update(gyroHeading.plus(gyroOffset), getModulePositions());
+        AprilTags.injectVisionData(LIMELIGHT.APRILTAG_CAMERA_POSES, this); // Limelight vision data from apriltags
+
+        // Sometimes the vision data will cause the robot to go crazy, so we check if the robot is moving too fast and reset the pose if it is
+        Pose2d currentPose = getPose();
+        double magnitude = currentPose.getTranslation().getNorm();
+        if (magnitude > 1000 || Double.isNaN(magnitude) || Double.isInfinite(magnitude)) {
+          System.out.println("BAD");
+          LEDs.setState(LEDs.State.BAD);
+          resetPose(gyroHeading.plus(gyroOffset), poseBefore, previousWheelPositions);
+        }
+        
+        previousWheelPositions = wheelPositions.copy();
+      }
+
+      @Override
+      public void simulationPeriodic() {
+      }
+
+      /**
+       * Drives the robot at a given field-relative velocity
+       * @param xVelocity [meters / second] Positive x is away from your alliance wall
+       * @param yVelocity [meters / second] Positive y is to your left when standing behind the alliance wall
+       * @param angularVelocity [radians / second] Rotational velocity, positive spins counterclockwise
+       */
+      public void driveFieldRelative(double xVelocity, double yVelocity, double angularVelocity) {
+        driveFieldRelative(new ChassisSpeeds(xVelocity, yVelocity, angularVelocity));
+      }
+
+      /**
+       * 
+       * Drives the robot at a given field-relative ChassisSpeeds
+       * @param fieldRelativeSpeeds
+       */
+      private void driveFieldRelative(ChassisSpeeds fieldRelativeSpeeds) {
+        driveAttainableSpeeds(fieldRelativeSpeeds);
+      }
+
+      /**
+       * Drives the robot at a given robot-relative velocity
+       * @param xVelocity [meters / second] Positive x is towards the robot's front
+       * @param yVelocity [meters / second] Positive y is towards the robot's left
+       * @param angularVelocity [radians / second] Rotational velocity, positive spins counterclockwise
+       */
+      public void driveRobotRelative(double xVelocity, double yVelocity, double angularVelocity) {
+        driveRobotRelative(new ChassisSpeeds(xVelocity, yVelocity, angularVelocity));
+      }
+
+      /**
+       * Drives the robot at a given robot-relative ChassisSpeeds
+       * @param robotRelativeSpeeds
+       */
+      private void driveRobotRelative(ChassisSpeeds robotRelativeSpeeds) {
+        driveFieldRelative(ChassisSpeeds.fromRobotRelativeSpeeds(robotRelativeSpeeds, getAllianceAwareHeading()));
+      }
+
+      /**
+       * Drives the robot at a given field-relative ChassisSpeeds. This is the base method, and all other drive methods call this one.
+       * @param fieldRelativeSpeeds The desired field-relative speeds
+       */
+      private void driveAttainableSpeeds(ChassisSpeeds fieldRelativeSpeeds) {
+        isDriven = true;
+
+        // Avoid obstacles
+        if (!(RobotState.isAutonomous() && !Autonomous.avoidPillars)) {
+          Translation2d velocity = XBoxSwerve.avoidObstacles(new Translation2d(
+            fieldRelativeSpeeds.vxMetersPerSecond,
+            fieldRelativeSpeeds.vyMetersPerSecond
+          ), this);
+          fieldRelativeSpeeds = new ChassisSpeeds(velocity.getX(), velocity.getY(), fieldRelativeSpeeds.omegaRadiansPerSecond);
+        }
+
+        // If the robot is rotating, cancel the rotation override
+        if (fieldRelativeSpeeds.omegaRadiansPerSecond > 0 && !RobotState.isAutonomous()) {
+          rotationOverridePoint = null;
+        }
+
+        // If the robot is in autonomous mode, or if a rotation override point is set, stop the robot from rotating
+        if (rotationOverridePoint != null || RobotState.isAutonomous()) {
+          fieldRelativeSpeeds.omegaRadiansPerSecond = 0.0;
+          if (rotationOverridePoint != null) facePoint(rotationOverridePoint.get(), rotationOverrideOffset);
+        }
+        
+        // Conditionals to compensate for the slop in rotation when aligning with PID controllers
+        if (Math.abs(fieldRelativeSpeeds.omegaRadiansPerSecond) > 0.01) {
+          setTargetHeading(getHeading());
+          isAligning = false;
+        }
+        if (!isAligning && doneRotating.calculate(Math.abs(getDrivenChassisSpeeds().omegaRadiansPerSecond) < 0.1)) {
+          setTargetHeading(getHeading());
+          isAligning = true;
+        }
+        
+        // Calculate the angular velocity to align with the target heading
+        double alignmentAngularVelocity = alignmentController.calculate(getHeading().getRadians()) + addedAlignmentAngularVelocity;
+        addedAlignmentAngularVelocity = 0.0;
+        if (isAligning && !alignmentController.atSetpoint() && !parked) fieldRelativeSpeeds.omegaRadiansPerSecond += alignmentAngularVelocity;
+
+        // Calculate the wheel speeds to achieve the desired field-relative speeds
+        SwerveDriveWheelStates wheelSpeeds = kinematics.toWheelSpeeds(fieldRelativeSpeeds);
+        SwerveDriveKinematics.desaturateWheelSpeeds(
+          wheelSpeeds.states,
+          fieldRelativeSpeeds,
+          SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY,
+          SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY,
+          SWERVE_DRIVE.PHYSICS.MAX_ANGULAR_VELOCITY
+        );
+        fieldRelativeSpeeds = kinematics.toChassisSpeeds(wheelSpeeds);
+
+        // Limit translational acceleration
+        Translation2d targetLinearVelocity = new Translation2d(fieldRelativeSpeeds.vxMetersPerSecond, fieldRelativeSpeeds.vyMetersPerSecond);
+        Translation2d currentLinearVelocity = new Translation2d(drivenChassisSpeeds.vxMetersPerSecond, drivenChassisSpeeds.vyMetersPerSecond);
+        linearAcceleration = (targetLinearVelocity).minus(currentLinearVelocity).div(Robot.getLoopTime());
+        double linearForce = linearAcceleration.getNorm() * SWERVE_DRIVE.ROBOT_MASS;
+
+        // Limit rotational acceleration
+        double targetAngularVelocity = fieldRelativeSpeeds.omegaRadiansPerSecond;
+        double currentAngularVelocity = drivenChassisSpeeds.omegaRadiansPerSecond;
+        angularAcceleration = (targetAngularVelocity - currentAngularVelocity) / Robot.getLoopTime();
+        double angularForce = Math.abs((SWERVE_DRIVE.PHYSICS.ROTATIONAL_INERTIA * angularAcceleration) / SWERVE_DRIVE.PHYSICS.DRIVE_RADIUS);
+        
+        // Limit the total force applied to the robot
+        double frictionForce = 9.80 * SWERVE_DRIVE.ROBOT_MASS * SWERVE_DRIVE.FRICTION_COEFFICIENT;
+        if (linearForce + angularForce > frictionForce) {
+          double factor = (linearForce + angularForce) / frictionForce;
+          linearAcceleration = linearAcceleration.div(factor);
+          angularAcceleration /= factor;
+        }
+
+        // Calculate the attainable linear and angular velocities and update the driven chassis speeds
+        Translation2d attainableLinearVelocity = currentLinearVelocity.plus(linearAcceleration.times(Robot.getLoopTime()));
+        double attainableAngularVelocity = currentAngularVelocity + (angularAcceleration * Robot.getLoopTime());
+        drivenChassisSpeeds = new ChassisSpeeds(attainableLinearVelocity.getX(), attainableLinearVelocity.getY(), attainableAngularVelocity);
+        
+        // Discretize converts a continous-time chassis speed into discrete-time to compensate for the loop time. This helps reduce drift when rotating while driving in a straight line.
+        drivenChassisSpeeds = ChassisSpeeds.discretize(drivenChassisSpeeds, Robot.getLoopTime());
+        SwerveDriveWheelStates drivenModuleStates = kinematics.toWheelSpeeds(ChassisSpeeds.fromFieldRelativeSpeeds(drivenChassisSpeeds, getAllianceAwareHeading()));
+        
+        // If the robot is not moving, park the modules
+        boolean moving = false;
+        for (SwerveModuleState moduleState : kinematics.toWheelSpeeds(fieldRelativeSpeeds).states) if (Math.abs(moduleState.speedMetersPerSecond) > 0.0) moving = true;
+        for (SwerveModuleState moduleState : drivenModuleStates.states) if (Math.abs(moduleState.speedMetersPerSecond) > 0.0) moving = true;
+        parked = false;
+
+        if (!moving) {
+          if (!parkingDisabled) {
+            parkModules();
+            return;
+          }
+          // If the robot is aligning, park the modules in a different configuration.
+          // Parking normally while aligning can cause the robot to drift away from the setpoint.
+          if (alignmentController.atSetpoint()) {
+            parkForAlignment();
+          }
+        }
+
+        parkingDisabled = false;
+        driveModules(drivenModuleStates);
+      }
+      
+      /**
+       * Drives the swerve modules at the calculated speeds
+       * @param wheelSpeeds The calculated speeds and directions for each module
+       */
+      private void driveModules(SwerveDriveWheelStates wheelSpeeds) {
+        // Drive the swerve modules at the calculated speeds
+        for (int i = 0; i < SWERVE_DRIVE.MODULE_COUNT; i++) {
+          modules[i].setTargetState(wheelSpeeds.states[i]);
+        }
+      }
+
+      /**
+       * Sets the target heading for the robot
+       * @param heading The target heading for the robot
+       */
+      public void setTargetHeading(Rotation2d heading) {
+        alignmentController.setSetpoint(heading.getRadians());
+        parkingDisabled = true;
+      }
+
+      /**
+       * Sets the target heading for the robot
+       * @param heading The target heading for the robot
+       */
+      public void setTargetHeadingAndVelocity(Rotation2d heading, double velocity) {
+        setTargetHeading(heading);
+        addedAlignmentAngularVelocity = velocity;
+      }
+
+      /**
+       * Faces a point on the field
+       * @param point The point on the field we want to face
+       */
+      public Command facePointCommand(Supplier<Translation2d> point, Rotation2d rotationOffset) {
+        return Commands.run(
+          () -> facePoint(point.get(), rotationOffset)
+        );
+      }
+
+      /**
+       * Faces a point on the field
+       * @param point
+       * @param rotationOffset
+       */
+      public void facePoint(Translation2d point, Rotation2d rotationOffset) {
+        double time = 0.02;
+
+        // With no point, do nothing.
+        if (point == null) {
+          setTargetHeadingAndVelocity(getHeading(), 0.0);
+          return;
+        }
+
+        // If the robot is close to the point, do nothing.
+        if (point.getDistance(getPose().getTranslation()) < 1.0 && RobotState.isAutonomous()) {
+          return;
+        }
+
+        // Calculate the future position of the robot, and predict how the heading will need to change in the future.
+        Translation2d currentPosition = getPose().getTranslation();
+        Translation2d futurePosition = getPose().getTranslation().plus(getFieldVelocity().times(time));
+        Rotation2d currentTargetHeading = point.minus(currentPosition).getAngle().plus(rotationOffset);
+        Rotation2d futureTargetHeading = point.minus(futurePosition).getAngle().plus(rotationOffset);    
+        double addedVelocity = futureTargetHeading.minus(currentTargetHeading).getRadians() / time;
+        if (getPose().getTranslation().getDistance(point) < 1.0) {
+          addedVelocity = 0.0;
+        }
+        setTargetHeadingAndVelocity(currentTargetHeading, addedVelocity);
+      }
+
+
+      /**
+       * 
+       * @return The target heading for the robot
+       */
+      public Rotation2d getTargetHeading() {
+        return Rotation2d.fromRadians(alignmentController.getSetpoint());
+      }
+
+      /**
+       * Sets a rotation point override so the robot always points in that direction. Used for autonomous mostly.
+       * @param point The point to face
+       * @param rotationOffset The offset to add to the rotation. 180 degrees would point away from it.
+       */
+      public void setRotationTargetOverrideFromPoint(Supplier<Translation2d> point, Rotation2d rotationOffset) {
+        rotationOverridePoint = point;
+        rotationOverrideOffset = rotationOffset;
+        addedAlignmentAngularVelocity = 0.0;
+      }
+
+      /**
+       * This creates an "X" pattern with the wheels which makes the robot very hard to move
+       */
+      private void parkModules() {
+        modules[0].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(45.0)));
+        modules[1].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(-45.0)));
+        modules[2].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(-45.0)));
+        modules[3].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(45.0)));
+        parked = true;
+      }
+
+      /**
+       * This creates an "O" pattern with the wheels which makes the robot very hard to translate, but still allows for rotation
+       */
+      private void parkForAlignment() {
+        modules[0].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(-45.0)));
+        modules[1].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(45.0)));
+        modules[2].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(45.0)));
+        modules[3].setTargetState(new SwerveModuleState(0.0, Rotation2d.fromDegrees(-45.0)));
+      }
+
+      /**
+       * Resets the odometer position to a given position
+       * @param pose Position to reset the odometer to
+       */
+      public void resetPose(Rotation2d heading, Pose2d pose, SwerveDriveWheelPositions wheelPositions) {
+        poseEstimator.resetPosition(heading, wheelPositions, pose);
+        alignmentController.setSetpoint(getHeading().getRadians());
+      }
+
+      /**
+       * Resets the odometer position to a given position
+       * @param pose Position to reset the odometer to
+       */
+      public void resetPose(Pose2d pose) {
+        poseEstimator.resetPosition(getHeading(), getModulePositions(), pose);
+        alignmentController.setSetpoint(getHeading().getRadians());
+      }
+
+      /**
+       * Checks if the robot can zero its heading
+       * @return
+       */
+      public boolean canZeroHeading() {
+        return (parked || isAligning || RobotState.isDisabled()) && (Math.abs(getRotationalVelocity()) < 0.5);
+      }
+
+      /**
+       * 
+       * @param visionMeasurement The robot position on the field from the apriltags
+       */
+      public void addVisionMeasurement(Pose2d visionMeasurement, double timestamp, Matrix<N3,N1> visionMeasurementStdDevs) {
+        Rotation2d oldHeading = getHeading();
+        poseEstimator.setVisionMeasurementStdDevs(visionMeasurementStdDevs);
+        poseEstimator.addVisionMeasurement(visionMeasurement, timestamp);
+        Rotation2d newHeading = getHeading();
+        alignmentController.setSetpoint(Rotation2d.fromRadians(alignmentController.getSetpoint()).plus(newHeading).minus(oldHeading).getRadians());
+      }
+
+      /**
+       * Stops all motors on all modules
+       */
+      public void stopModules() {
+        for (SwerveModule module : modules) {
+          module.stop();
+        }
+      }
+
+      /**
+       * Returns the field-relative velocity of the robot
+       * @return Field-relative velocity in m/s
+       */
+      public Translation2d getFieldVelocity() {
+        ChassisSpeeds fieldRelativeChassisSpeeds = ChassisSpeeds.fromRobotRelativeSpeeds(getMeasuredChassisSpeeds(), getHeading());
+        return new Translation2d(fieldRelativeChassisSpeeds.vxMetersPerSecond, fieldRelativeChassisSpeeds.vyMetersPerSecond);
+      }
+
+      /**
+       * Returns the rotational velocity of the robot
+       * @return Rotational velocity in rad/s
+       */
+      public double getRotationalVelocity() {
+        return getMeasuredChassisSpeeds().omegaRadiansPerSecond;
+      }
+
+      /**
+       * @return Target chassis x, y, and rotational velocity (robot-relative)
+       */
+      private ChassisSpeeds getTargetChassisSpeeds() {
+        return kinematics.toChassisSpeeds(getTargetModuleStates());
+      }
+
+      /**
+       * @return Measured chassis x velocity, y velocity, and rotational velocity (robot-relative)
+       */
+      private ChassisSpeeds getMeasuredChassisSpeeds() {
+        return kinematics.toChassisSpeeds(getMeasuredModuleStates());
+      }
+
+      /**
+       * @return Driven chassis x speed, y speed, and rotational speed (robot-relative)
+       */
+      private ChassisSpeeds getDrivenChassisSpeeds() {
+        return drivenChassisSpeeds;
+      }
+
+      /**
+       * @return Measured module positions
+       */
+      public SwerveDriveWheelPositions getModulePositions() {
+        SwerveModulePosition[] positions = new SwerveModulePosition[SWERVE_DRIVE.MODULE_COUNT];
+        for (int i = 0; i < SWERVE_DRIVE.MODULE_COUNT; i++) {
+          positions[i] = modules[i].getModulePosition();
+        }
+        return new SwerveDriveWheelPositions(positions);
+      }
+
+      /**
+       * @return Target module states (speed and direction)
+       */
+      private SwerveDriveWheelStates getTargetModuleStates() {
+        SwerveModuleState[] targetStates = new SwerveModuleState[SWERVE_DRIVE.MODULE_COUNT];
+        for (int i = 0; i < SWERVE_DRIVE.MODULE_COUNT; i++) {
+          targetStates[i] = modules[i].getTargetState();
+        }
+        return new SwerveDriveWheelStates(targetStates);
+      }
+
+      /**
+       * @return Measured module states (speed and direction)
+       */
+      private SwerveDriveWheelStates getMeasuredModuleStates() {
+        SwerveModuleState[] measuredStates = new SwerveModuleState[SWERVE_DRIVE.MODULE_COUNT];
+        for (int i = 0; i < SWERVE_DRIVE.MODULE_COUNT; i++) {
+          measuredStates[i] = modules[i].getMeasuredState();
+        }
+        return new SwerveDriveWheelStates(measuredStates);
+      }
+
+      /**
+       * @return This swerve drive's NavX AHRS IMU Gyro
+       */
+      public static AHRS getGyro() {
+        return gyro;
+      }
+
+      /**
+       * Resets gyro heading
+       */
+      public void resetGyroHeading(Rotation2d newHeading) {
+        gyroOffset = newHeading.minus(gyroHeading);
+        alignmentController.reset();
+        alignmentController.setSetpoint(newHeading.getRadians());
+      }
+
+      /**
+       * @return Gyro heading as a Rotation2d
+       */
+      public Rotation2d getHeading() {
+        return getPose().getRotation();
+      }
+
+      /**
+       * @return Heading as a Rotation2d based on alliance
+       */
+      public Rotation2d getAllianceAwareHeading() {
+        return getHeading().plus(Rotation2d.fromDegrees(Constants.IS_BLUE_TEAM.get() ? 0.0 : 180.0));
+      }
+
+      /**
+       * @return Pose on the field from odometer data as a Pose2d
+       */
+      public Pose2d getPose() {
+        Pose2d estimatedPose = poseEstimator.getEstimatedPosition();
+        return estimatedPose;
+      }
+
+      /**
+       * Get the pose of the robot at a given timestamp in the past (up to 1 or 2 seconds ago)
+       * @param timestampSeconds The timestamp to get the pose at (Timer.getFPGATimestamp() is the current timestamp)
+       * @return Pose on the field from odometer data as a Pose2d
+       */
+      public Pose2d getPose(double timestampSeconds) {
+        Pose2d estimatedPose = poseEstimator.getEstimatedPosition(timestampSeconds);
+        return estimatedPose;
+      }
+
+      /**
+       * Predicts the future pose of the robot based on the current velocity. This pose is if the robot suddenly decelerates to 0 m/s.
+       * @return Future pose on the field
+       */
+      public Pose2d getFuturePose() {
+        Translation2d futurePosition = getPose().getTranslation();
+        futurePosition = futurePosition.plus(getFieldVelocity().times(getFieldVelocity().getNorm()).div(2.0 * Constants.SWERVE_DRIVE.PHYSICS.MAX_LINEAR_ACCELERATION));
+        return new Pose2d(futurePosition, getPose().getRotation());
+      }
+
+      /**
+       * Patch solution to be more accurate under the stage
+       * @return
+       */
+      public Pose2d getFuturePoseStage() {
+        Translation2d futurePosition = getPose().getTranslation();
+        futurePosition = futurePosition.plus(getFieldVelocity().times(getFieldVelocity().getNorm()).div(1.0 * Constants.SWERVE_DRIVE.PHYSICS.MAX_LINEAR_ACCELERATION));
+        return new Pose2d(futurePosition, getPose().getRotation());
+      }
+
+      /**
+       * Is the robot under the stage?
+       * @return
+       */
+      public boolean underStage() {
+        if (!RobotState.isAutonomous()) {
+          return MathUtils.isInsideTriangle(Field.BLUE_STAGE_CORNERS[0], Field.BLUE_STAGE_CORNERS[1], Field.BLUE_STAGE_CORNERS[2], getFuturePose().getTranslation()) ||
+                 MathUtils.isInsideTriangle(Field.RED_STAGE_CORNERS[0], Field.RED_STAGE_CORNERS[1], Field.RED_STAGE_CORNERS[2], getFuturePose().getTranslation()) ||
+                 MathUtils.isInsideTriangle(Field.BLUE_STAGE_CORNERS[0], Field.BLUE_STAGE_CORNERS[1], Field.BLUE_STAGE_CORNERS[2], getPose().getTranslation()) ||
+                 MathUtils.isInsideTriangle(Field.RED_STAGE_CORNERS[0], Field.RED_STAGE_CORNERS[1], Field.RED_STAGE_CORNERS[2], getPose().getTranslation());
+        } else {
+          return MathUtils.isInsideTriangle(Field.BLUE_STAGE_CORNERS[0], Field.BLUE_STAGE_CORNERS[1], Field.BLUE_STAGE_CORNERS[2], getFuturePoseStage().getTranslation()) ||
+                 MathUtils.isInsideTriangle(Field.RED_STAGE_CORNERS[0], Field.RED_STAGE_CORNERS[1], Field.RED_STAGE_CORNERS[2], getFuturePoseStage().getTranslation());
+        }
+      }
+
+      /**
+       * @return Field2d object for SmartDashboard widget.
+       */
+      public static Field2d getField() {
+        return field;
+      }
+
+      /**
+       * Converts the speed of a wheel moving to the angular velocity of the robot as if it's
+       * rotating in place
+       * @param wheelSpeed Drive velocity in m/s
+       * @return Equivalent rotational velocity in rad/s
+       * @see #toLinear(double)
+       */
+      public static double toAngular(double wheelSpeed) {
+        return wheelSpeed / SWERVE_DRIVE.PHYSICS.DRIVE_RADIUS;
+      }
+
+      /**
+       * Converts the angular velocity of the robot to the speed of a wheel moving as if the
+       * robot is rotating in place
+       * @param angularVelocity Rotational velocity in rad/s
+       * @return Equivalent drive velocity in m/s
+       * @see #toAngular(double)
+       */
+      public static double toLinear(double angularVelocity) {
+        return angularVelocity * SWERVE_DRIVE.PHYSICS.DRIVE_RADIUS;
+      }
+
+      /**
+       * Create a kinematics object for the swerve drive based on the SWERVE_DRIVE constants
+       * @return A SwerveDriveKinematics object that models the swerve drive
+      */
+      public static SwerveDriveKinematics getKinematics() {
+        return new SwerveDriveKinematics(
+          new Translation2d( SWERVE_DRIVE.TRACKWIDTH / 2.0, SWERVE_DRIVE.WHEELBASE  / 2.0), 
+          new Translation2d( SWERVE_DRIVE.TRACKWIDTH / 2.0, -SWERVE_DRIVE.WHEELBASE / 2.0), 
+          new Translation2d(-SWERVE_DRIVE.TRACKWIDTH / 2.0, SWERVE_DRIVE.WHEELBASE  / 2.0), 
+          new Translation2d(-SWERVE_DRIVE.TRACKWIDTH / 2.0, -SWERVE_DRIVE.WHEELBASE / 2.0));
+      }
+
+      /**
+       * Pathfind to a first given point on the field, and then follow a straight line to the second point.
+       * @param firstPoint
+       * @param secondPoint
+       * @return
+       */
+      public Command pathfindThenFollowPath(Pose2d firstPoint, Pose2d secondPoint) {
+        Rotation2d angle = secondPoint.getTranslation().minus(firstPoint.getTranslation()).getAngle();
+
+        List<Translation2d> bezierPoints = PathPlannerPath.bezierFromPoses(
+          new Pose2d(firstPoint.getTranslation(), angle),
+          new Pose2d(secondPoint.getTranslation(), angle)
+        );
+
+        PathPlannerPath path = new PathPlannerPath(
+          bezierPoints,
+          SWERVE_DRIVE.AUTONOMOUS.DEFAULT_PATH_CONSTRAINTS,
+          new GoalEndState(
+            0.0,
+            secondPoint.getRotation(),
+            true
+          )
+        );
+        
+        return AutoBuilder.pathfindThenFollowPath(
+          path,
+          SWERVE_DRIVE.AUTONOMOUS.DEFAULT_PATH_CONSTRAINTS,
+          0.0 // Rotation delay distance in meters. This is how far the robot should travel before attempting to rotate.
+        );
+      }
+
+      /**
+       * Go to a position on the field (without object avoidence)
+       * @param pose Field-relative pose on the field to go to
+       * @param xboxController Xbox controller to cancel the command
+       * @return A command to run
+       */
+      public Command goToSimple(Pose2d pose) {
+        Rotation2d angle = pose.getTranslation().minus(getPose().getTranslation()).getAngle();
+
+        List<Translation2d> bezierPoints = PathPlannerPath.bezierFromPoses(
+          new Pose2d(getPose().getTranslation(), angle),
+          new Pose2d(pose.getTranslation(), angle)
+        );
+
+        PathPlannerPath path = new PathPlannerPath(
+          bezierPoints,
+          SWERVE_DRIVE.AUTONOMOUS.DEFAULT_PATH_CONSTRAINTS,
+          new GoalEndState(
+            0.0,
+            pose.getRotation(),
+            true
+          )
+        );
+
+        return Commands.sequence(
+          AutoBuilder.followPath(path),
+          runOnce(() -> setTargetHeading(pose.getRotation()))
+        );
+      }
+    }
+
+    |
+
+
+          Kinematics​ <#kinematics>
+
+    A lot of the programming that goes into swerve has to do with the
+    math behind how the module states are decided. This is done with
+    kinematics, and thankfully, WPILib has great build-in support for it.
+
+    The kinematics is defined like this:
+
+    |private SwerveDriveKinematics kinematics = getKinematics();
+
+    |
+
+    where |getKinematics| is:
+
+    |/**
+     * Create a kinematics object for the swerve drive based on the SWERVE_DRIVE constants
+     * @return A SwerveDriveKinematics object that models the swerve drive
+     */
+    public static SwerveDriveKinematics getKinematics() {
+      return new SwerveDriveKinematics(
+        new Translation2d( SWERVE_DRIVE.TRACKWIDTH / 2.0, SWERVE_DRIVE.WHEELBASE  / 2.0), 
+        new Translation2d( SWERVE_DRIVE.TRACKWIDTH / 2.0, -SWERVE_DRIVE.WHEELBASE / 2.0), 
+        new Translation2d(-SWERVE_DRIVE.TRACKWIDTH / 2.0, SWERVE_DRIVE.WHEELBASE  / 2.0), 
+        new Translation2d(-SWERVE_DRIVE.TRACKWIDTH / 2.0, -SWERVE_DRIVE.WHEELBASE / 2.0));
+    }
+
+    |
+
+    The |SwerveDriveKinematics| object is part of WPILib, and simply
+    takes in a set of four positions for the swerve modules relative to
+    the center of the robot. The order of these positions is very
+    important, and it must be Front Left, Front Right, Back Left, Back
+    Right. This kinematics object is then used to convert a desired
+    chassis movement to the individual states sent to the swerve modules:
+
+    |SwerveDriveWheelStates moduleStates = kinematics.toWheelSpeeds(robotRelativeChassisSpeeds);
+
+    |
+
+
+          ChassisSpeeds​ <#chassisspeeds>
+
+    |ChassisSpeeds| is the common way to store a given movement of the
+    swerve drive. It contains a translational velocity and rotational
+    velocity. Importantly, this can either be relative to the robot
+    (positive is always forward), or relative to the field (positive is
+    always away from the alliance wall). This can get tricky, so be sure
+    which frame of reference the ChassisSpeeds object is when you're
+    programming.
+
+
+          Odometry​ <#odometry>
+
+    An odometer is a device that is commonly found in cars to measure
+    how many miles they've driven. The same goes for swerve drive.
+    Because we can measure how far each wheel travels, and we have a
+    gyroscope, we can theoretically calculate exactly where the robot is
+    on the field. In practice, this method is prone to drift, and often
+    becomes more inaccurate as the match goes on, especially if the
+    robot is collided with. These collisions, and even just quick
+    acceleration and stopping can cause the wheels to slip, giving the
+    odometer false data.
+
+    We can mitigate this with a Kalman Filter. A kalman filter is a
+    mathematical model to fuse multiple sources of data. If we use this
+    with vision data from the cameras, we can get a pretty reasonable
+    estimate of our position on the field. This is called a |PoseEstimator|.
+
+    This is how that is initialized:
+
+    |// Set up pose estimator and rotation controller
+    poseEstimator = new CustomSwerveDrivePoseEstimator(
+      kinematics,
+      SWERVE_DRIVE.STARTING_POSE.get().getRotation(), // Starting rotation
+      getModulePositions().positions, // The accumulated distance so far on each wheel
+      SWERVE_DRIVE.STARTING_POSE.get(), // Starting pose
+      VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(2)), // Margin of error for odometry
+      VecBuilder.fill(1.0, 1.0, Units.degreesToRadians(30)) // Margin of error for vision pose estimates (apriltags)
+    );
+
+    |
+
+    And then, we periodically feed it data:
+
+    |poseEstimator.update(gyroHeading.plus(gyroOffset), getModulePositions());
+
+    |
+
+    And when we want to know the position on the field, we call:
+
+    |/**
+     * @return Pose on the field from odometer data as a Pose2d
+     */
+    public Pose2d getPose() {
+      Pose2d estimatedPose = poseEstimator.getEstimatedPosition();
+      return estimatedPose;
+    }
+
+    |
+
+    Here's all the odometry code, including some that I've added in to
+    compensate for gyro disconnects and bad vision data:
+
+    |public void updateOdometry() {
+      Pose2d poseBefore = getPose();
+
+      // Math to use the swerve modules to calculate the robot's rotation if the gyro disconnects
+      SwerveDriveWheelPositions wheelPositions = getModulePositions();
+      Twist2d twist = kinematics.toTwist2d(previousWheelPositions, wheelPositions);
+      Pose2d newPose = getPose().exp(twist);
+      if (!gyroConnected && (gyro.isConnected() && !gyro.isCalibrating())) {
+        gyroOffset = gyroHeading.minus(gyro.getRotation2d());
+      }
+      gyroConnected = gyro.isConnected() && !gyro.isCalibrating();
+      if (gyroConnected && !RobotBase.isSimulation()) {
+        gyroHeading = gyro.getRotation2d();
+      } else {
+        gyroHeading = gyroHeading.plus(newPose.getRotation().minus(getPose().getRotation()));
+      }
+
+      poseEstimator.update(gyroHeading.plus(gyroOffset), getModulePositions());
+      AprilTags.injectVisionData(LIMELIGHT.APRILTAG_CAMERA_POSES, this); // Limelight vision data from apriltags
+
+      // Sometimes the vision data will cause the robot to go crazy, so we check if the robot is moving too fast and reset the pose if it is
+      Pose2d currentPose = getPose();
+      double magnitude = currentPose.getTranslation().getNorm();
+      if (magnitude > 1000 || Double.isNaN(magnitude) || Double.isInfinite(magnitude)) {
+        System.out.println("BAD");
+        LEDs.setState(LEDs.State.BAD);
+        resetPose(gyroHeading.plus(gyroOffset), poseBefore, previousWheelPositions);
+      }
+      
+      previousWheelPositions = wheelPositions.copy();
+    }
+
+    |
+
+
+          Drive Attainable Speeds​ <#drive-attainable-speeds>
+
+    There are two ways to drive SwerveDrive, field-relative, and robot-
+    relative. Most of the time, we drive the robot using field-relative
+    controls, but we still need robot-relative occasionally. Commanding
+    the drivetrain to drive is done using one of the four public methods:
+
+    |/**
+     * Drives the robot at a given field-relative velocity
+     * @param xVelocity [meters / second] Positive x is away from your alliance wall
+     * @param yVelocity [meters / second] Positive y is to your left when standing behind the alliance wall
+     * @param angularVelocity [radians / second] Rotational velocity, positive spins counterclockwise
+     */
+    public void driveFieldRelative(double xVelocity, double yVelocity, double angularVelocity) {
+      driveFieldRelative(new ChassisSpeeds(xVelocity, yVelocity, angularVelocity));
+    }
+
+    /**
+     * 
+     * Drives the robot at a given field-relative ChassisSpeeds
+     * @param fieldRelativeSpeeds
+     */
+    private void driveFieldRelative(ChassisSpeeds fieldRelativeSpeeds) {
+      driveAttainableSpeeds(fieldRelativeSpeeds);
+    }
+
+    /**
+     * Drives the robot at a given robot-relative velocity
+     * @param xVelocity [meters / second] Positive x is towards the robot's front
+     * @param yVelocity [meters / second] Positive y is towards the robot's left
+     * @param angularVelocity [radians / second] Rotational velocity, positive spins counterclockwise
+     */
+    public void driveRobotRelative(double xVelocity, double yVelocity, double angularVelocity) {
+      driveRobotRelative(new ChassisSpeeds(xVelocity, yVelocity, angularVelocity));
+    }
+
+    /**
+     * Drives the robot at a given robot-relative ChassisSpeeds
+     * @param robotRelativeSpeeds
+     */
+    private void driveRobotRelative(ChassisSpeeds robotRelativeSpeeds) {
+      driveFieldRelative(ChassisSpeeds.fromRobotRelativeSpeeds(robotRelativeSpeeds, getAllianceAwareHeading()));
+    }
+
+    |
+
+    Now you might notice, that these methods all eventually call each
+    other, and then call |driveAttainableSpeeds|. This method post-
+    processes the drive commands to allow for smoother driving and
+    desired movement that is actually attainable given the physics at
+    play. Here's that method:
+
+    |/**
+     * Drives the robot at a given field-relative ChassisSpeeds. This is the base method, and all other drive methods call this one.
+     * @param fieldRelativeSpeeds The desired field-relative speeds
+     */
+    private void driveAttainableSpeeds(ChassisSpeeds fieldRelativeSpeeds) {
+      isDriven = true;
+
+      // Avoid obstacles
+      if (!(RobotState.isAutonomous() && !Autonomous.avoidPillars)) {
+        Translation2d velocity = XBoxSwerve.avoidObstacles(new Translation2d(
+          fieldRelativeSpeeds.vxMetersPerSecond,
+          fieldRelativeSpeeds.vyMetersPerSecond
+        ), this);
+        fieldRelativeSpeeds = new ChassisSpeeds(velocity.getX(), velocity.getY(), fieldRelativeSpeeds.omegaRadiansPerSecond);
+      }
+
+      // If the robot is rotating, cancel the rotation override
+      if (fieldRelativeSpeeds.omegaRadiansPerSecond > 0 && !RobotState.isAutonomous()) {
+        rotationOverridePoint = null;
+      }
+
+      // If the robot is in autonomous mode, or if a rotation override point is set, stop the robot from rotating
+      if (rotationOverridePoint != null || RobotState.isAutonomous()) {
+        fieldRelativeSpeeds.omegaRadiansPerSecond = 0.0;
+        if (rotationOverridePoint != null) facePoint(rotationOverridePoint.get(), rotationOverrideOffset);
+      }
+      
+      // Conditionals to compensate for the slop in rotation when aligning with PID controllers
+      if (Math.abs(fieldRelativeSpeeds.omegaRadiansPerSecond) > 0.01) {
+        setTargetHeading(getHeading());
+        isAligning = false;
+      }
+      if (!isAligning && doneRotating.calculate(Math.abs(getDrivenChassisSpeeds().omegaRadiansPerSecond) < 0.1)) {
+        setTargetHeading(getHeading());
+        isAligning = true;
+      }
+      
+      // Calculate the angular velocity to align with the target heading
+      double alignmentAngularVelocity = alignmentController.calculate(getHeading().getRadians()) + addedAlignmentAngularVelocity;
+      addedAlignmentAngularVelocity = 0.0;
+      if (isAligning && !alignmentController.atSetpoint() && !parked) fieldRelativeSpeeds.omegaRadiansPerSecond += alignmentAngularVelocity;
+
+      // Calculate the wheel speeds to achieve the desired field-relative speeds
+      SwerveDriveWheelStates wheelSpeeds = kinematics.toWheelSpeeds(fieldRelativeSpeeds);
+      SwerveDriveKinematics.desaturateWheelSpeeds(
+        wheelSpeeds.states,
+        fieldRelativeSpeeds,
+        SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY,
+        SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY,
+        SWERVE_DRIVE.PHYSICS.MAX_ANGULAR_VELOCITY
+      );
+      fieldRelativeSpeeds = kinematics.toChassisSpeeds(wheelSpeeds);
+
+      // Limit translational acceleration
+      Translation2d targetLinearVelocity = new Translation2d(fieldRelativeSpeeds.vxMetersPerSecond, fieldRelativeSpeeds.vyMetersPerSecond);
+      Translation2d currentLinearVelocity = new Translation2d(drivenChassisSpeeds.vxMetersPerSecond, drivenChassisSpeeds.vyMetersPerSecond);
+      linearAcceleration = (targetLinearVelocity).minus(currentLinearVelocity).div(Robot.getLoopTime());
+      double linearForce = linearAcceleration.getNorm() * SWERVE_DRIVE.ROBOT_MASS;
+
+      // Limit rotational acceleration
+      double targetAngularVelocity = fieldRelativeSpeeds.omegaRadiansPerSecond;
+      double currentAngularVelocity = drivenChassisSpeeds.omegaRadiansPerSecond;
+      angularAcceleration = (targetAngularVelocity - currentAngularVelocity) / Robot.getLoopTime();
+      double angularForce = Math.abs((SWERVE_DRIVE.PHYSICS.ROTATIONAL_INERTIA * angularAcceleration) / SWERVE_DRIVE.PHYSICS.DRIVE_RADIUS);
+      
+      // Limit the total force applied to the robot
+      double frictionForce = 9.80 * SWERVE_DRIVE.ROBOT_MASS * SWERVE_DRIVE.FRICTION_COEFFICIENT;
+      if (linearForce + angularForce > frictionForce) {
+        double factor = (linearForce + angularForce) / frictionForce;
+        linearAcceleration = linearAcceleration.div(factor);
+        angularAcceleration /= factor;
+      }
+
+      // Calculate the attainable linear and angular velocities and update the driven chassis speeds
+      Translation2d attainableLinearVelocity = currentLinearVelocity.plus(linearAcceleration.times(Robot.getLoopTime()));
+      double attainableAngularVelocity = currentAngularVelocity + (angularAcceleration * Robot.getLoopTime());
+      drivenChassisSpeeds = new ChassisSpeeds(attainableLinearVelocity.getX(), attainableLinearVelocity.getY(), attainableAngularVelocity);
+      
+      // Discretize converts a continous-time chassis speed into discrete-time to compensate for the loop time. This helps reduce drift when rotating while driving in a straight line.
+      drivenChassisSpeeds = ChassisSpeeds.discretize(drivenChassisSpeeds, Robot.getLoopTime());
+      SwerveDriveWheelStates drivenModuleStates = kinematics.toWheelSpeeds(ChassisSpeeds.fromFieldRelativeSpeeds(drivenChassisSpeeds, getAllianceAwareHeading()));
+      
+      // If the robot is not moving, park the modules
+      boolean moving = false;
+      for (SwerveModuleState moduleState : kinematics.toWheelSpeeds(fieldRelativeSpeeds).states) if (Math.abs(moduleState.speedMetersPerSecond) > 0.0) moving = true;
+      for (SwerveModuleState moduleState : drivenModuleStates.states) if (Math.abs(moduleState.speedMetersPerSecond) > 0.0) moving = true;
+      parked = false;
+
+      if (!moving) {
+        if (!parkingDisabled) {
+          parkModules();
+          return;
+        }
+        // If the robot is aligning, park the modules in a different configuration.
+        // Parking normally while aligning can cause the robot to drift away from the setpoint.
+        if (alignmentController.atSetpoint()) {
+          parkForAlignment();
+        }
+      }
+
+      parkingDisabled = false;
+      driveModules(drivenModuleStates);
+    }
+
+    |
+
+    The biggest thing here comes from the acceleration limits we impose
+    on the velocities. By keeping track of the previous velocity, we can
+    calculate our desired acceleration and clamp it to reasonable limits
+    based on the friction force from the carpet.
+
+    Additionally, we have a PID controller for rotation. This is to keep
+    the heading of the robot fixed when we're not intending to rotate.
+    This means that if we've been bumped by another robot, we'll
+    automatically re-orient ourselves to face the same direction as before.
+
+
+          Facing a point​ <#facing-a-point>
+
+    To face a point seems as simple as telling our rotation PID
+    controller to point in a certain direction. Ideally, it would be
+    this simple, but in practice, there is quite a delay between setting
+    the target rotation and the robot actually rotating to that point.
+    If the target direction changes because we're moving, the PID
+    controller won't be able to keep up. This is where we can apply some
+    predictive behavior.
+
+    If we know our current velocity, we can calculate the rotational
+    velocity required to stay pointed at the point, and add that to the
+    output of our PID controller. Here's what that whole method looks like:
+
+    |/**
+     * Faces a point on the field
+     * @param point
+     * @param rotationOffset
+     */
+    public void facePoint(Translation2d point, Rotation2d rotationOffset) {
+      double time = 0.02;
+
+      // With no point, do nothing.
+      if (point == null) {
+        setTargetHeadingAndVelocity(getHeading(), 0.0);
+        return;
+      }
+
+      // If the robot is close to the point, do nothing.
+      if (point.getDistance(getPose().getTranslation()) < 1.0 && RobotState.isAutonomous()) {
+        return;
+      }
+
+      // Calculate the future position of the robot, and predict how the heading will need to change in the future.
+      Translation2d currentPosition = getPose().getTranslation();
+      Translation2d futurePosition = getPose().getTranslation().plus(getFieldVelocity().times(time));
+      Rotation2d currentTargetHeading = point.minus(currentPosition).getAngle().plus(rotationOffset);
+      Rotation2d futureTargetHeading = point.minus(futurePosition).getAngle().plus(rotationOffset);    
+      double addedVelocity = futureTargetHeading.minus(currentTargetHeading).getRadians() / time;
+      if (getPose().getTranslation().getDistance(point) < 1.0) {
+        addedVelocity = 0.0;
+      }
+      setTargetHeadingAndVelocity(currentTargetHeading, addedVelocity);
+    }
+
+    |
+
+
+          PathPlanner​ <#pathplanner>
+
+    Pathplanner is the tool we use for autonomous and teleoperated
+    assisted driving. It allows us to create a path on the field and
+    have the robot follow it. Here's what that setup looks like:
+
+    |// Path planner setup
+    AutoBuilder.configureHolonomic(
+      this::getPose, // Robot pose supplier
+      this::resetPose, // Method to reset odometry (will be called if your auto has a starting pose)
+      this::getMeasuredChassisSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+      this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
+      new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
+        new PIDConstants(SWERVE_DRIVE.AUTONOMOUS.TRANSLATION_GAINS.kP, SWERVE_DRIVE.AUTONOMOUS.TRANSLATION_GAINS.kI, SWERVE_DRIVE.AUTONOMOUS.TRANSLATION_GAINS.kD), // Translation PID constants
+        new PIDConstants(SWERVE_DRIVE.AUTONOMOUS.   ROTATION_GAINS.kP, SWERVE_DRIVE.AUTONOMOUS.   ROTATION_GAINS.kI, SWERVE_DRIVE.AUTONOMOUS.   ROTATION_GAINS.kD), // Rotation PID constants
+        SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY, // Max module speed, in m/s
+        SWERVE_DRIVE.PHYSICS.DRIVE_RADIUS, // Drive base radius in meters. Distance from robot center to furthest module.
+        new ReplanningConfig(true, true) // Default path replanning config. See the API for the options here
+      ),
+      () -> false,
+      this // Reference to this subsystem to set requirements
+    );
+
+    |
+
+    And when we want to have the robot drive to a position on the field,
+    we can generate a path and have it follow the path like so:
+
+    |/**
+     * Go to a position on the field (without object avoidance)
+     * @param pose Field-relative pose on the field to go to
+     * @param xboxController Xbox controller to cancel the command
+     * @return A command to run
+     */
+    public Command goToSimple(Pose2d pose) {
+      Rotation2d angle = pose.getTranslation().minus(getPose().getTranslation()).getAngle();
+
+      List<Translation2d> bezierPoints = PathPlannerPath.bezierFromPoses(
+        new Pose2d(getPose().getTranslation(), angle),
+        new Pose2d(pose.getTranslation(), angle)
+      );
+
+      PathPlannerPath path = new PathPlannerPath(
+        bezierPoints,
+        SWERVE_DRIVE.AUTONOMOUS.DEFAULT_PATH_CONSTRAINTS,
+        new GoalEndState(
+          0.0,
+          pose.getRotation(),
+          true
+        )
+      );
+
+      return Commands.sequence(
+        AutoBuilder.followPath(path),
+        runOnce(() -> setTargetHeading(pose.getRotation()))
+      );
+    }
+
+    |
+
+    If we want to do something more complicated, we can avoid objects
+    with pathfinding:
+
+    |/**
+     * Pathfind to a first given point on the field, and then follow a straight line to the second point.
+     * @param firstPoint
+     * @param secondPoint
+     * @return
+     */
+    public Command pathfindThenFollowPath(Pose2d firstPoint, Pose2d secondPoint) {
+      Rotation2d angle = secondPoint.getTranslation().minus(firstPoint.getTranslation()).getAngle();
+
+      List<Translation2d> bezierPoints = PathPlannerPath.bezierFromPoses(
+        new Pose2d(firstPoint.getTranslation(), angle),
+        new Pose2d(secondPoint.getTranslation(), angle)
+      );
+
+      PathPlannerPath path = new PathPlannerPath(
+        bezierPoints,
+        SWERVE_DRIVE.AUTONOMOUS.DEFAULT_PATH_CONSTRAINTS,
+        new GoalEndState(
+          0.0,
+          secondPoint.getRotation(),
+          true
+        )
+      );
+      
+      return AutoBuilder.pathfindThenFollowPath(
+        path,
+        SWERVE_DRIVE.AUTONOMOUS.DEFAULT_PATH_CONSTRAINTS,
+        0.0 // Rotation delay distance in meters. This is how far the robot should travel before attempting to rotate.
+      );
+    }
+
+    |
+
+
+    Part 4​ <#part-4>
+
+
+      Telemetry
+
+    Telemetry is one of the most important and yet simple things that
+    can really accelerate the debug process. Telemetry is all about
+    collecting data about the robot and saving it to logs to view later.
+    With sufficiently advanced software, we can replay an entire match
+    from log files, and observe where the robot failed, and speculate why.
+
+    The tool that we've to replay log files used is called
+    AdvantageScope <https://github.com/Mechanical-Advantage/
+    AdvantageScope>, and is extremely powerful.
+
+    Despite these powerful tools, the important part is the logging
+    itself. Software needs to exist to log the values you'd like to
+    save, and that's what I'll talk about now.
+
+
+        NetworkTables​ <#networktables>
+
+    A very simple and powerful method to log data is using
+    networktables. You can imagine that the |NetworkTable| is just a big
+    table full of data that is sent back and forth from the drive
+    computer and the robot from the radio. This table contains anything
+    you'd like, you just need to write to it.
+
+    This is as simple as:
+
+    |NetworkTable table = NetworkTableInstance.getDefault().getTable("Logs");
+    table.getEntry(key).setValue(obj);
+
+    |
+
+    This allows logs to be looked at in real-time from the drive
+    computer, but doesnt save anything to a file for viewing later. This
+    is where the |DataLogManager| comes into play.
+
+
+        DataLogManager​ <#datalogmanager>
+
+    By calling this at the start of the robot program,
+
+    |DataLogManager.start();
+
+    |
+
+    Everything that is sent over network tables will be saved to
+    a .wpilog file either on the roboRIO or a connected usb stick. This
+    log file contains every entry to the network tables and a timestamp
+    on each, so it can be replayed exactly as it was recorded.
+
+    Additionally, to log data from the driver station, you can call:
+
+    |DriverStation.startDataLog(DataLogManager.getLog(), true);
+
+    |
+
+
+        Custom Logger​ <#custom-logger>
+
+    Now to log data, all we need to do is put values into the network
+    tables. This is simple, but can get quite annoying with how many
+    entries we might want to log, so we create our own custom logging class:
+
+    |public final class Logger {
+      private static NetworkTable table = NetworkTableInstance.getDefault().getTable("Logs");
+      private static Map<String, Supplier<Object>> suppliers = new HashMap<String, Supplier<Object>>();
+      private static Map<String, Object> values = new HashMap<String, Object>();
+      private static ShuffleboardTab tab = Shuffleboard.getTab("Logging");
+      private static GenericEntry loggingButton = tab.add("Enable Logging", true).withWidget(BuiltInWidgets.kToggleSwitch).withSize(1, 1).withPosition(0, 0).getEntry();
+      
+      private static Notifier notifier = new Notifier(
+        () -> {
+          try {
+            Logger.logAll();
+          } catch (Exception e) {
+            
+          }
+        }
+      );
+      
+      public static void startLog() {
+        notifier.startPeriodic(LOGGING.LOGGING_PERIOD_MS / 1000.0);
+      }
+
+      public static boolean loggingEnabled() {
+        return loggingButton.getBoolean(false);
+      }
+
+      private static void logAll() {
+        if (!loggingButton.getBoolean(false)) return;
+
+        for (String key : suppliers.keySet()) {
+          Object supplied_value = suppliers.get(key).get();
+          Object saved_value = values.get(key);
+          if (supplied_value.equals(saved_value)) {
+            continue;
+          }
+          try {
+            log(key, supplied_value);
+          } catch (IllegalArgumentException e) {
+            System.out.println("[LOGGING] unknown type: " + supplied_value.getClass().getSimpleName());
+          }
+        }
+        logRio("roboRio");
+      }
+
+      public static void autoLog(String key, Supplier<Object> supplier) {
+        suppliers.put(key, supplier);
+      }
+
+      public static void autoLog(String key, Object obj) {
+        autoLog(key, () -> obj);
+      }
+
+      public static void autoLog(SubsystemBase subsystem, String key, Supplier<Object> supplier) {
+        autoLog(subsystem.getClass().getSimpleName() + "/" + key, supplier);
+      }
+
+      public static void log(String key, Object obj) {
+        if (obj instanceof CANSparkMax) log(key, (CANSparkMax) obj);
+        else if (obj instanceof RelativeEncoder) log(key, (RelativeEncoder) obj);
+        else if (obj instanceof AHRS) log(key, (AHRS) obj);
+        else if (obj instanceof Pose2d) log(key, (Pose2d) obj);
+        else if (obj instanceof SwerveModuleState) log(key, (SwerveModuleState) obj);
+        else if (obj instanceof SwerveModuleState[]) log(key, (SwerveModuleState[]) obj);
+        else if (obj instanceof SwerveModulePosition[]) log(key, (SwerveModulePosition[]) obj);
+        else if (obj instanceof CANStatus) log(key, (CANStatus) obj);
+        else if (obj instanceof PowerDistribution) log(key, (PowerDistribution) obj);
+        else if (obj instanceof Translation2d) log(key, (Translation2d) obj);
+        else if (obj instanceof Translation3d) log(key, (Translation3d) obj);
+        else {
+          table.getEntry(key).setValue(obj);
+          values.put(key, obj);
+        };
+      }
+
+      public static void log(String path, Translation3d translation) {
+        log(path, new double[] {translation.getX(), translation.getY(), translation.getZ()});
+      }
+
+      public static void log(String path, Translation2d translation) {
+        log(path, new double[] {translation.getX(), translation.getY()});
+      }
+
+      public static void log(String path, CANcoder encoder) {
+        log(path + "/absolutePosition", encoder.getAbsolutePosition());
+        log(path + "/position", encoder.getPosition());
+        log(path + "/velocity", encoder.getVelocity());
+      }
+
+      public static void log(String path, AHRS navX) {
+        log(path + "/isAltitudeValid", navX.isAltitudeValid());
+        log(path + "/isCalibrating", navX.isCalibrating());
+        log(path + "/isConnected", navX.isConnected());
+        log(path + "/isMagneticDisturbance", navX.isMagneticDisturbance());
+        log(path + "/isMagnetometerCalibrated", navX.isMagnetometerCalibrated());
+        log(path + "/isMoving", navX.isMoving());
+        log(path + "/isRotating", navX.isRotating());
+        log(path + "/actualUpdateRate", navX.getActualUpdateRate());
+        log(path + "/firmwareVersion", navX.getFirmwareVersion());
+        log(path + "/altitude", navX.getAltitude());
+        log(path + "/angle", navX.getAngle());
+        log(path + "/angleAdjustment", navX.getAngleAdjustment());
+        log(path + "/compassHeading", navX.getCompassHeading());
+        log(path + "/displacementX", navX.getDisplacementX());
+        log(path + "/displacementY", navX.getDisplacementY());
+        log(path + "/displacementZ", navX.getDisplacementZ());
+        log(path + "/fusedHeading", navX.getFusedHeading());
+        log(path + "/pitch", navX.getPitch());
+        log(path + "/pressure", navX.getPressure());
+        log(path + "/roll", navX.getRoll());
+        log(path + "/yaw", navX.getYaw());
+        log(path + "/temperature", navX.getTempC());
+        log(path + "/velocityX", navX.getVelocityX());
+        log(path + "/velocityY", navX.getVelocityY());
+        log(path + "/velocityZ", navX.getVelocityZ());
+        log(path + "/accelerationX", navX.getRawAccelX());
+        log(path + "/accelerationY", navX.getRawAccelY());
+        log(path + "/accelerationZ", navX.getRawAccelZ());
+      }
+
+      public static void log(String path, Pose2d pose) {
+        log(path + "_radians", new double[] { pose.getX(), pose.getY(), pose.getRotation().getRadians() });
+        log(path + "_degrees", new double[] { pose.getX(), pose.getY(), pose.getRotation().getDegrees() });
+      }
+
+      public static void log(String path, SwerveModuleState swerveModuleState) {
+        log(path + "/state", new double[] {
+          swerveModuleState.angle.getRadians(), 
+          swerveModuleState.speedMetersPerSecond
+        });
+      }
+
+      public static void log(String path, SwerveModuleState[] swerveModuleStates) {
+        log(path + "/states", new double[] {
+          swerveModuleStates[0].angle.getRadians(), 
+          swerveModuleStates[0].speedMetersPerSecond, 
+          swerveModuleStates[1].angle.getRadians(), 
+          swerveModuleStates[1].speedMetersPerSecond, 
+          swerveModuleStates[2].angle.getRadians(), 
+          swerveModuleStates[2].speedMetersPerSecond, 
+          swerveModuleStates[3].angle.getRadians(), 
+          swerveModuleStates[3].speedMetersPerSecond, 
+        });
+      }
+
+      public static void log(String path, SwerveModulePosition[] swerveModulePositions) {
+        log(path + "/positions", new double[] {
+          swerveModulePositions[0].angle.getRadians(), 
+          swerveModulePositions[0].distanceMeters, 
+          swerveModulePositions[1].angle.getRadians(), 
+          swerveModulePositions[1].distanceMeters, 
+          swerveModulePositions[2].angle.getRadians(), 
+          swerveModulePositions[2].distanceMeters, 
+          swerveModulePositions[3].angle.getRadians(), 
+          swerveModulePositions[3].distanceMeters, 
+        });
+      }
+
+      public static void logRio(String path) {
+        log(path + "/isBrownedOut", RobotController.isBrownedOut());
+        log(path + "/isSysActive", RobotController.isSysActive());
+        log(path + "/brownoutVoltage", RobotController.getBrownoutVoltage());
+        log(path + "/batteryVoltage", RobotController.getBatteryVoltage());
+        log(path + "/batteryVoltage", RobotController.getBatteryVoltage());
+        log(path + "/inputCurrent", RobotController.getInputCurrent());
+        log(path + "/inputVoltage", RobotController.getInputVoltage());
+        log(path + "/3V3Line/current", RobotController.getCurrent3V3());
+        log(path + "/5VLine/current", RobotController.getCurrent5V());
+        log(path + "/6VLine/current", RobotController.getCurrent6V());
+        log(path + "/3V3Line/enabled", RobotController.getEnabled3V3());
+        log(path + "/5VLine/enabled", RobotController.getEnabled5V());
+        log(path + "/6VLine/enabled", RobotController.getEnabled6V());
+        log(path + "/3V3Line/faultCount", RobotController.getFaultCount3V3());
+        log(path + "/5VLine/faultCount", RobotController.getFaultCount5V());
+        log(path + "/6VLine/faultCount", RobotController.getFaultCount6V());
+        log(path + "/3V3Line/voltage", RobotController.getVoltage3V3());
+        log(path + "/5VLine/voltage", RobotController.getVoltage5V());
+        log(path + "/6VLine/voltage", RobotController.getVoltage6V());
+        log(path + "/canStatus", RobotController.getCANStatus());
+      }
+
+      public static void log(String path, CANStatus canStatus) {
+        log(path + "/busOffCount", canStatus.busOffCount);
+        log(path + "/percentBusUtilization", canStatus.percentBusUtilization);
+        log(path + "/receiveErrorCount", canStatus.receiveErrorCount);
+        log(path + "/transmitErrorCount", canStatus.transmitErrorCount);
+        log(path + "/txFullCount", canStatus.txFullCount);
+      }
+
+      public static void log(String path, PowerDistribution PDH) {
+        log(path + "/faults", PDH.getFaults());
+        log(path + "/canId", PDH.getModule());
+        for (int i = 0; i <= 23; i++) {
+          log(path + "/channels/channel" + i + "Current", PDH.getCurrent(i));
+        }
+        log(path + "/isSwitchableChannelOn", PDH.getSwitchableChannel());
+        log(path + "/temperature", PDH.getTemperature());
+        log(path + "/totalCurrent", PDH.getTotalCurrent());
+        log(path + "/totalJoules", PDH.getTotalEnergy());
+        log(path + "/totalWatts", PDH.getTotalPower());
+        log(path + "/voltage", PDH.getVoltage());
+      }
+
+      public static void log(String path, PowerDistributionFaults faults) {
+        log(path + "/brownout", faults.Brownout);
+        log(path + "/canWarning", faults.CanWarning);
+
+        for (int i = 0; i < 24; i++) {
+          log(path + "/channel" + i + "BreakerFault", faults.getBreakerFault(i));
+        }
+        
+        log(path + "/hardwareFault", faults.HardwareFault);
+      }
+
+      public static void log(String path, Object self, Class clazz) {    
+        for (Class c: clazz.getDeclaredClasses()) {
+          try {
+            log(path + "/" + c.getSimpleName(), self, c);
+          }
+          catch (Exception e) {}
+        }
+
+        for (Field f: clazz.getDeclaredFields()) {
+          try {
+            log(path + "/" + f.getName(), f.get(self));
+          }
+          catch (Exception e) {}
+        }
+      }
+    }
+
+    |
+
+    You might notice that there are a lot of methods with the same name,
+    notably the |log| method. This is called "method overloading" and
+    allows only the method with the right arguments to be used whenever
+    calling it. This means that we can log any datatype, as long as we
+    have some hardcoded types that we allow. Thats this section:
+
+    |public static void log(String key, Object obj) {
+      if (obj instanceof CANSparkMax) log(key, (CANSparkMax) obj);
+      else if (obj instanceof RelativeEncoder) log(key, (RelativeEncoder) obj);
+      else if (obj instanceof AHRS) log(key, (AHRS) obj);
+      else if (obj instanceof Pose2d) log(key, (Pose2d) obj);
+      else if (obj instanceof SwerveModuleState) log(key, (SwerveModuleState) obj);
+      else if (obj instanceof SwerveModuleState[]) log(key, (SwerveModuleState[]) obj);
+      else if (obj instanceof SwerveModulePosition[]) log(key, (SwerveModulePosition[]) obj);
+      else if (obj instanceof CANStatus) log(key, (CANStatus) obj);
+      else if (obj instanceof PowerDistribution) log(key, (PowerDistribution) obj);
+      else if (obj instanceof Translation2d) log(key, (Translation2d) obj);
+      else if (obj instanceof Translation3d) log(key, (Translation3d) obj);
+      else {
+        table.getEntry(key).setValue(obj);
+        values.put(key, obj);
+      };
+    }
+
+    |
+
+    The magical part of this logging class is the |autoLog| methods.
+    These methods take in a supplier to the value we want to log, and
+    automatically log the value periodically. On top of that, one of the
+    |autoLog| methods takes in the subsystem that the data is from, and
+    will automatically create a key that is tied to the subsystem's
+    name, so that our log files have a neat tree structure.
+
+    This means that logging becomes as easy as:
+
+    |Logger.autoLog(this, "Is Aimed", () -> isAimed());
+
+    |
+
+    And thats it! No messing around with periodic loops or super long
+    keys, just call that and you don't need to worry about it anymore.
+
+
+        Status Checks​ <#status-checks>
+
+    Another important part of telemetry is making sure systems are
+    functioning properly. If not, someone should know about it, and
+    that's where status checks come in. There is a panel on the
+    dashboard full of green lights to indicate different status checks,
+    and if some are red, there is clearly a problem. This is done using
+    the |StatusChecks| class:
+
+    |public class StatusChecks {
+      public static int row = 0;
+      public static int column = 1;
+      private static ShuffleboardTab tab = Shuffleboard.getTab("Status Checks");
+      private static ComplexWidget refreshButton = tab.add("Refresh", StatusChecks.refresh()).withWidget(BuiltInWidgets.kCommand).withSize(1, 1).withPosition(0, 0);
+      private static Map<String, BooleanSupplier> suppliers = new HashMap<String, BooleanSupplier>();
+      private static Map<String, GenericEntry> entries = new HashMap<String, GenericEntry>();
+
+      private static void addCheck(String name, BooleanSupplier supplier) {
+        suppliers.put(name, supplier);
+        entries.put(name, tab.add(name.replace("/", " "), supplier.getAsBoolean()).withWidget(BuiltInWidgets.kBooleanBox).withSize(1, 1).withPosition(column, row).getEntry());
+        column++;
+        if (column > 12) {
+          column = 0;
+          row++;
+        }
+      }
+
+      public static void addCheck(SubsystemBase subsystem, String name, BooleanSupplier supplier) {
+        addCheck(subsystem.getClass().getSimpleName() + "/" + name, supplier);
+        
+      }
+
+      public static Command refresh() {
+        return Commands.runOnce(() -> {
+          for (Map.Entry<String, BooleanSupplier> supplier : suppliers.entrySet()) {
+            entries.get(supplier.getKey()).setBoolean(supplier.getValue().getAsBoolean());
+          }
+        }).ignoringDisable(true);
+      }
+    }
+
+    |
+
+    To add a status check, call it like so:
+
+    |StatusChecks.addCheck(this, "isGyroConnected", () -> gyro.isConnected());
+
+    |
+
+    And it'll be automatically added to the dashboard.
+
+
+    Part 5​ <#part-5>
+
+
+      Simulation
+
+    Another key factor in reducing debug time and enabling faster code
+    development is simulation support. The biggest bottleneck for
+    software development is time available on the robot, and most
+    seasons, the code team only gets a few weeks near the end of the
+    season to work on the robot, even if it isn't fully working.
+    Simulation not only allows for code development much earlier, but
+    also allows for development from home or really anywhere with a
+    computer.
+
+    Swerve drive is the most complicated mechanism to simulate, so I'll
+    talk about it here. The key to good simulation is making sure that
+    its implemented at as low a level as possible. If the simulation is
+    done all the way down to the motor level (as it should), then the
+    rest of the code should not need to be changed, and all code that
+    would normally control the robot, would control the simulation in
+    the same exact way. This allows for the same code to work in both
+    scenarios with no changes whatsoever.
+
+    To implement this system for swerve drive, we create a simulated
+    swerve module that inherits all the functionality from the real
+    swerve module class:
+
+    |public class SwerveModuleSim extends SwerveModule {
+      private FlywheelSim driveMotor = new FlywheelSim(
+        LinearSystemId.identifyVelocitySystem(DRIVE_MOTOR_PROFILE.kV * SWERVE_DRIVE.WHEEL_RADIUS, DRIVE_MOTOR_PROFILE.kA * SWERVE_DRIVE.WHEEL_RADIUS),
+        NEO.STATS,
+        SWERVE_DRIVE.DRIVE_MOTOR_GEARING
+      );
+      
+      private FlywheelSim steerMotor = new FlywheelSim(
+        LinearSystemId.identifyVelocitySystem(STEER_MOTOR_PROFILE.kV, STEER_MOTOR_PROFILE.kA),
+        NEO.STATS,
+        SWERVE_DRIVE.STEER_MOTOR_GEARING
+      );
+
+      private PIDController drivePID = new PIDController(
+        DRIVE_MOTOR_PROFILE.kP,
+        DRIVE_MOTOR_PROFILE.kI,
+        DRIVE_MOTOR_PROFILE.kD
+      );
+      private PIDController steerPID = new PIDController(
+        STEER_MOTOR_PROFILE.kP, 
+        STEER_MOTOR_PROFILE.kI,
+        STEER_MOTOR_PROFILE.kD
+      );
+      private SimpleMotorFeedforward driveFF = new SimpleMotorFeedforward(
+        DRIVE_MOTOR_PROFILE.kS,
+        DRIVE_MOTOR_PROFILE.kV,
+        DRIVE_MOTOR_PROFILE.kA
+      );
+          
+      private double driveVoltRamp = 0.0;
+      private double steerVoltRamp = 0.0;
+      private double drivePosition = 0.0;
+      private double steerRadians = (Math.random() * 2.0 * Math.PI) - Math.PI;
+      
+      public SwerveModuleSim(MODULE_CONFIG config, int corner, String name) {
+        super(config, corner, name);
+        steerPID.enableContinuousInput(-Math.PI, Math.PI);
+      }
+
+      @Override
+      public void drive(SwerveModuleState state) {
+        double speedMetersPerSecond = state.speedMetersPerSecond;
+        double radians = state.angle.getRadians();
+
+        if (SWERVE_DRIVE.DO_ANGLE_ERROR_SPEED_REDUCTION) {
+          speedMetersPerSecond *= Math.cos(SwerveMath.angleDistance(getMeasuredState().angle.getRadians(), getMeasuredState().angle.getRadians()));
+        }
+        
+        for (int i = 0; i < 20; i++) {
+          double driveVolts = driveFF.calculate(speedMetersPerSecond, 0.0) + 12.0 * drivePID.calculate(getMeasuredState().speedMetersPerSecond, speedMetersPerSecond);
+          double steerVolts = 12.0 * steerPID.calculate(getMeasuredState().angle.getRadians(), radians);
+          
+          driveVoltRamp += (MathUtil.clamp(driveVolts - driveVoltRamp, -12.0 / (SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY / SWERVE_DRIVE.PHYSICS.MAX_LINEAR_ACCELERATION) / 1000.0, 12.0 / (SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY / SWERVE_DRIVE.PHYSICS.MAX_LINEAR_ACCELERATION) / 1000.0));
+          driveVolts = driveVoltRamp;
+          
+          steerVoltRamp += (MathUtil.clamp(steerVolts - steerVoltRamp, -12.0 / NEO.SAFE_RAMP_RATE / 1000.0, 12.0 / NEO.SAFE_RAMP_RATE / 1000.0));
+          steerVolts = steerVoltRamp;
+
+          driveMotor.setInputVoltage(MathUtil.clamp(driveVolts, -12.0, 12.0));
+          steerMotor.setInputVoltage(MathUtil.clamp(steerVolts, -12.0, 12.0));
+
+          driveMotor.update(1.0 / 1000.0);
+          steerMotor.update(1.0 / 1000.0);
+
+          drivePosition += getMeasuredState().speedMetersPerSecond * (1.0 / 1000.0);
+          steerRadians += steerMotor.getAngularVelocityRadPerSec() * (1.0 / 1000.0);
+          steerRadians = MathUtil.angleModulus(steerRadians);
+        }
+      }
+
+      @Override
+      public void seedSteerEncoder() {
+        return;
+      }
+      
+      @Override
+      public void stop() {
+        super.setTargetState(new SwerveModuleState(0.0, getMeasuredState().angle));
+        steerMotor.setInputVoltage(0.0);
+        driveMotor.setInputVoltage(0.0);
+      }
+
+      @Override
+      public SwerveModuleState getMeasuredState() {
+        return new SwerveModuleState(driveMotor.getAngularVelocityRadPerSec() * SWERVE_DRIVE.WHEEL_RADIUS, Rotation2d.fromRadians(steerRadians));
+      }
+
+      @Override
+      public SwerveModulePosition getModulePosition() {
+        return new SwerveModulePosition(drivePosition, getMeasuredState().angle);
+      }
+    }
+
+    |
+
+    The only difference between this swerve module implementation and
+    the original is the encoders, motors, and on-board PID controllers,
+    since those are the only physical devices that we lack in software.
+
+    The motors are represented as flywheels and are given the
+    appropriate gearing and motor specs:
+
+    |private FlywheelSim driveMotor = new FlywheelSim(
+      LinearSystemId.identifyVelocitySystem(DRIVE_MOTOR_PROFILE.kV * SWERVE_DRIVE.WHEEL_RADIUS, DRIVE_MOTOR_PROFILE.kA * SWERVE_DRIVE.WHEEL_RADIUS),
+      NEO.STATS,
+      SWERVE_DRIVE.DRIVE_MOTOR_GEARING
+    );
+
+    private FlywheelSim steerMotor = new FlywheelSim(
+      LinearSystemId.identifyVelocitySystem(STEER_MOTOR_PROFILE.kV, STEER_MOTOR_PROFILE.kA),
+      NEO.STATS,
+      SWERVE_DRIVE.STEER_MOTOR_GEARING
+    );
+
+    |
+
+    With these |FlywheelSim| objects that come with WPILib, we can
+    simulate a voltage with:
+
+    |driveMotor.setInputVoltage(voltage);
+
+    |
+
+    And measure the velocity with:
+
+    |driveMotor.getAngularVelocityRadPerSec();
+
+    |
+
+    All of the PID control is done with WPILib's |PIDController| class,
+    but to simulate the on-board PID control on the SparkMAX's at 1000
+    Hz, we run the control loop 20 times every 50 ms:
+
+    |for (int i = 0; i < 20; i++) {
+      double driveVolts = driveFF.calculate(speedMetersPerSecond, 0.0) + 12.0 * drivePID.calculate(getMeasuredState().speedMetersPerSecond, speedMetersPerSecond);
+      double steerVolts = 12.0 * steerPID.calculate(getMeasuredState().angle.getRadians(), radians);
+        
+      driveVoltRamp += (MathUtil.clamp(driveVolts - driveVoltRamp, -12.0 / (SWERVE_DRIVE.PHYSICS.MAX_LINEAR_VELOCITY / SWERVE_DRIVE.PHYSICS.MAX_LINEAR_ACCELERATION) / 1000.0, 12.0 / (SWERVE_DRIVE.PHYSICS  MAX_LINEAR_VELOCITY / SWERVE_DRIVE.PHYSICS.MAX_LINEAR_ACCELERATION) / 1000.0));
+      driveVolts = driveVoltRamp;
+        
+      steerVoltRamp += (MathUtil.clamp(steerVolts - steerVoltRamp, -12.0 / NEO.SAFE_RAMP_RATE / 1000.0, 12.0 / NEO.SAFE_RAMP_RATE / 1000.0));
+      steerVolts = steerVoltRamp;
+
+      driveMotor.setInputVoltage(MathUtil.clamp(driveVolts, -12.0, 12.0));
+      steerMotor.setInputVoltage(MathUtil.clamp(steerVolts, -12.0, 12.0));
+
+      driveMotor.update(1.0 / 1000.0);
+      steerMotor.update(1.0 / 1000.0);
+
+      drivePosition += getMeasuredState().speedMetersPerSecond * (1.0 / 1000.0);
+      steerRadians += steerMotor.getAngularVelocityRadPerSec() * (1.0 / 1000.0);
+      steerRadians = MathUtil.angleModulus(steerRadians);
+    }
+
+    |
+
+    And that's it! The swerve module simulation will now emulate real-
+    world motor physics and you can drive around in simulation!
+
+
+    Conclusion​ <#conclusion>
+
+Through a series of resources, hands-on experimentation, and research
+into specialized software practices for FRC, this project delved into
+the complexities and intricacies of robotics, offering insights into
+Control Theory, Sensors, Swerve Drive, Telemetry, and Simulation. Each
+discovery was carefully documented and organized into a comprehensive
+architecture for optimal retention and accessibility, all housed in a
+purpose-built wiki using Docusaurus.
+
+I hope this resource becomes a great learning experience for
+intermediate programmers to take that next step into advanced robotics
+engineering and make their mark on FRC forever.
+
+Edit this page <https://github.com/log2bits/6962-technical-wiki/blob/
+main/docs/paper.md>
+
+Next
+Control Theory
+ <https://6962-technical-wiki.vercel.app/>
+
+  * Intro <#intro>
+  * Research Question <#research-question>
+  * Sources <#sources>
+  * Methodology <#methodology>
+  * Acquired Knowledge & Literature Review <#acquired-knowledge--
+    literature-review>
+  * Part 1 <#part-1>
+  * Part 2 <#part-2>
+  * Part 3 <#part-3>
+  * Part 4 <#part-4>
+  * Part 5 <#part-5>
+  * Conclusion <#conclusion>
+

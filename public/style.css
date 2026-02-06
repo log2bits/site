@@ -41,7 +41,7 @@
 
 body {
   background: var(--base);
-  color: var(--subtext0);
+  color: var(--text);
   font-family: "Fira Sans";
   word-wrap: break-word;
 }
@@ -62,6 +62,7 @@ main {
   margin: 14vh auto 0;
   font-size: 0.9rem;
   line-height: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 /* consistent vertical rhythm */
@@ -154,6 +155,9 @@ h3 {
 
 hr {
   color: var(--surface1);
+  background-color: var(--surface1);
+  border: none;
+  height: 1px;
 }
 
 @keyframes drop-in {
@@ -257,15 +261,6 @@ li a:focus-visible::after {
   filter: brightness(1.25);
 }
 
-
-
-main {
-  max-width: 37.5rem;
-  margin: 14vh auto 0;
-  font-size: 0.9rem;
-  line-height: 1.5rem;
-}
-
 /* only add side padding on small screens */
 @media (max-width: 42rem) {
   main {
@@ -276,4 +271,107 @@ main {
   ol {
     padding-left: 1.75rem;
   }
+}
+
+
+/* =========================
+   Code Blocks (Catppuccin)
+   ========================= */
+
+pre.astro-code {
+  background-color: var(--base) !important;
+  color: var(--text);
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--surface1);
+
+  padding: 0.5rem 1rem;
+
+  overflow-x: auto;
+}
+
+/* Typography */
+pre.astro-code,
+pre.astro-code code {
+  font-family:
+    "Fira Mono",
+    monospace;
+}
+
+/* Operators & symbols slightly muted for readability */
+pre.astro-code .line span {
+  color: var(--text);
+}
+
+/* Inline code (to match blocks) */
+:not(pre) > code {
+  background-color: var(--surface0);
+  color: var(--text);
+
+  padding: 0.15em 0.4em;
+  border-radius: 0.5rem;
+  border: 1px solid var(--surface1);
+
+  font-family:
+    "Fira Mono",
+    monospace;
+}
+
+.sheet-embed {
+  --scale: 0.5;
+  --vh: 600px;
+
+  height: var(--vh);
+  width: 100%;
+  overflow: hidden;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--surface1);
+  background: var(--mantle);
+}
+
+.sheet-embed iframe {
+  display: block;
+  width: calc(100% / var(--scale));
+  height: calc(var(--vh) / var(--scale));
+  border: 0;
+
+  transform: scale(var(--scale));
+  transform-origin: top left;
+}
+
+
+img:not(.icon) {
+  display: block;
+  width: 100%;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--surface1);
+
+  margin: 1rem 0;
+}
+
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.tag {
+  border: 1px solid var(--surface1);
+  background: var(--mantle);
+  color: var(--subtext1);
+
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: nowrap;
 }

@@ -18,6 +18,14 @@ const { Content } = await project.render();
   <header>
     <h1>{project.data.title}</h1>
     <p>{project.data.desc}</p>
+    {project.data.tags?.length ? (
+      <ul class="tags">
+        {project.data.tags.map((t) => (
+          <li class="tag">{t}</li>
+        ))}
+      </ul>
+    ) : null}
+
   </header>
 
   {project.data.links && (
