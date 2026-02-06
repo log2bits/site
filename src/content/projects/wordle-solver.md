@@ -4,12 +4,6 @@ desc: Heavily optimized Wordle solver written in Python.
 tags: [Python, Algorithms, Search, Optimization, Probability, Game Solving]
 ---
 
-## Wordle Bot - Near-Optimal Guessing Algorithm
-
-**Tech:** Python  
-**Focus:** Algorithms, search optimization, probabilistic reasoning  
-**Link:** https://github.com/log2bits/wordle-bot
-
 ### Overview
 This project implements a near-optimal Wordle solver by modeling the game as a constrained search problem. Rather than relying on heuristics or letter-frequency tricks, the solver evaluates guesses by how much information they are expected to reveal about the secret word.
 

@@ -4,11 +4,6 @@ desc: Data analysis of Reddit’s r/place database.
 tags: [Python, Data Analysis, Visualization, Large Datasets, Statistics]
 ---
 
-## r/place Analysis — Large-Scale Collaborative Pixel Data
-
-**Tech:** Python  
-**Focus:** Data analysis, visualization, large-scale datasets
-
 ### Overview
 This project is an exploratory and quantitative analysis of Reddit’s **r/place** dataset, a large-scale collaborative canvas where millions of users placed colored pixels over time. The dataset captures both individual user behavior and emergent large-scale coordination patterns.
 

@@ -4,11 +4,6 @@ desc: OpenCV-based vision system to detect game objects and estimate 3D pose usi
 tags: [Python, Java, Computer Vision, OpenCV, Robotics, Pose Estimation, AprilTags]
 ---
 
-## FRC Computer Vision - Object Detection and AprilTag Localization
-
-**Tech:** Python, Java, OpenCV  
-**Focus:** Computer vision, pose estimation, real-time robotics perception
-
 ### Overview
 This project implements a real-time computer vision system for an FRC robot, used both to detect game objects and to estimate the robot’s position on the field. The system combines classical image processing techniques with AprilTag-based pose estimation to support autonomous decision making and closed-loop control.
 

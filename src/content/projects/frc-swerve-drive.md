@@ -4,11 +4,6 @@ desc: Odometry, kinematics, and simulation for an FRC swerve drive.
 tags: [Java, Robotics, Control Theory, Kinematics, Odometry, Simulation, State Estimation]
 ---
 
-## FRC Swerve Drive - Odometry, Kinematics, and Simulation
-
-**Role:** Lead Programmer & Student Mentor  
-**Focus:** Robotics control, state estimation, simulation, systems engineering
-
 ### Overview
 This project is a complete, from-scratch implementation of a **coaxial swerve drive system** for an FRC robot. It spans kinematics, odometry, control theory, autonomous motion planning, and full physics simulation.
 

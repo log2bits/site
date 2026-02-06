@@ -4,11 +4,6 @@ desc: Custom Minecraft server hosted on AWS EC2 using Docker and Pterodactyl.
 tags: [AWS, Linux, Cloud Infrastructure, DNS, Systems Configuration, DevOps]
 ---
 
-## Minecraft Server Infrastructure — Cloud Deployment and Systems Configuration
-
-**Tech:** AWS EC2, Linux (Ubuntu), DNS, Docker  
-**Focus:** Cloud infrastructure, system configuration, service integration
-
 ### Overview
 This project is a custom Minecraft server deployed on **AWS EC2**, focused on learning and applying real-world infrastructure concepts such as cloud provisioning, DNS configuration, remote system management, and complex service configuration.
 

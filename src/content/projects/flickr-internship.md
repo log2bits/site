@@ -4,12 +4,6 @@ desc: Optimized AWS Lambda cloud compute, reducing cost by 92% while increasing 
 tags: [Python, AWS, Cloud Computing, Performance Optimization, Distributed Systems, Cost Modeling, Production Systems]
 ---
 
-## Flickr Internship - Cloud Compute Optimization
-
-**Role:** Software Engineering Intern  
-**Tech:** AWS Lambda, Python, Splunk, Google Sheets, AWS  
-**Focus:** Performance optimization, cost modeling, systems analysis
-
 ### Overview
 During my internship at Flickr, I optimized a production AWS Lambda workflow used to repair and reprocess corrupted user photos. By tuning memory and concurrency settings using real performance data, I significantly reduced cloud compute costs while improving throughput.
 

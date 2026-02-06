@@ -4,12 +4,6 @@ desc: Docusaurus documentation for FRC swerve drive systems to transfer knowledg
 tags: [Documentation, Technical Writing, Docusaurus, Robotics, Systems Engineering, Knowledge Transfer]
 ---
 
-## FRC Technical Documentation — Robotics Systems and Swerve Drive
-
-**Role:** Lead Programmer & Student Mentor  
-**Tech:** Docusaurus, Markdown, Diagrams  
-**Focus:** Technical documentation, knowledge transfer, systems explanation
-
 ### Overview
 This project is a comprehensive technical documentation effort for an FRC robotics team, built using a **custom Docusaurus site**. The documentation explains complex robotics systems—most notably coaxial swerve drive—from first principles, with the goal of making advanced systems understandable, maintainable, and extensible by future team members.
 

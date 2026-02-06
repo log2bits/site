@@ -4,11 +4,6 @@ desc: Web scraping and analysis of over 150,000 games on Steam.
 tags: [Python, Web Scraping, Data Analysis, Modeling, Large Datasets, Statistics]
 ---
 
-## Steam Scraper & Analysis — Large-Scale Game Performance Modeling
-
-**Tech:** Python  
-**Focus:** Web scraping, data cleaning, statistical analysis, modeling
-
 ### Overview
 This project is a large-scale data collection and analysis effort focused on understanding **game performance on Steam**. Using Python, I scraped and analyzed data for **over 150,000 games**, built derived metrics to estimate sales and revenue, and developed a model to evaluate whether games performed better or worse than expected.
 
