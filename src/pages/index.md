@@ -2,7 +2,7 @@
 layout: ../layouts/BaseLayout.astro
 title: Logan MacAskill
 ---
-## This site ***can*** be reached
+## This site <span class="can-word">can</span> be reached
 
 **Logan MacAskill** returned a valid response.
 
