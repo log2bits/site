@@ -2,6 +2,8 @@
 title: Wordle Solver
 desc: Heavily optimized Wordle solver written in Python.
 tags: [Python, Algorithms, Search, Optimization, Probability, Game Solving]
+kinds: [project]
+resume: true
 ---
 
 ### Overview

@@ -2,6 +2,8 @@
 title: FRC Technical Documentation
 desc: Docusaurus documentation for FRC swerve drive systems to transfer knowledge to future team leads.
 tags: [Documentation, Technical Writing, Docusaurus, Robotics, Systems Engineering, Knowledge Transfer]
+kinds: [project, leadership]
+resume: true
 ---
 
 ### Overview

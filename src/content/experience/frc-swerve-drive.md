@@ -2,6 +2,8 @@
 title: FRC Swerve Drive
 desc: Odometry, kinematics, and simulation for an FRC swerve drive.
 tags: [Java, Robotics, Control Theory, Kinematics, Odometry, Simulation, State Estimation]
+kinds: [project, leadership]
+resume: true
 ---
 
 ### Overview

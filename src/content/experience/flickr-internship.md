@@ -2,6 +2,11 @@
 title: Flickr Internship
 desc: Optimized AWS Lambda cloud compute, reducing cost by 92% while increasing performance by 39%.
 tags: [Python, AWS, Cloud Computing, Performance Optimization, Distributed Systems, Cost Modeling, Production Systems]
+kinds: [work]
+org: Flickr
+role: Software Engineer
+start: Summer 2023
+resume: true
 ---
 
 ### Overview

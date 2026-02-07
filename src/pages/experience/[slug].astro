@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("experience");
+  return entries.map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.title}>
+  <header>
+    <h1>{entry.data.title}</h1>
+
+    <p>
+      {entry.data.role}
+      {entry.data.org && <> · {entry.data.org}</>}
+      {(entry.data.start || entry.data.end) && <> · {entry.data.start ?? ""}{entry.data.end ? ` - ${entry.data.end}` : ""}</>}
+    </p>
+
+    <p class="desc">{entry.data.desc}</p>
+
+    {entry.data.tags?.length ? (
+      <ul class="tags">
+        {entry.data.tags.map((t) => <li class="tag">{t}</li>)}
+      </ul>
+    ) : null}
+
+    {entry.data.links && (
+      <p>
+        {entry.data.links.map((l) => (
+          <>
+            <a href={l.href} target="_blank" rel="noreferrer">{l.label}</a>{" "}
+          </>
+        ))}
+      </p>
+    )}
+  </header>
+
+  <hr>
+
+  <section>
+    <Content />
+  </section>
+</BaseLayout>

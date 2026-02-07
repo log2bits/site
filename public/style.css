@@ -41,7 +41,7 @@
 
 body {
   background: var(--base);
-  color: var(--text);
+  color: var(--subtext1);
   font-family: "Fira Sans";
   word-wrap: break-word;
 }
@@ -93,8 +93,11 @@ section > * + * {
 ul,
 ol {
   padding-left: 2.5rem;
-  line-height: 1.5rem;
-  margin-top: 0rem;
+  margin-top: 0.5rem;
+}
+
+li + li {
+  margin-top: 0.5rem;
 }
 
 /* ===================== Buttons / Nav ===================== */
@@ -143,13 +146,13 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 1.25rem;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -181,55 +184,6 @@ hr {
 .icon {
   animation: drop-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
-:root {
-  --list-hue-start: 267deg;
-  --list-sat: 84%;
-  --list-light: 81%;
-}
-
-:root {
-  --list-hue-start: 217deg;
-  --list-sat: 92%;
-  --list-light: 76%;
-
-  --list-cycle: 20;               /* ← CHANGE THIS */
-  --list-step: calc(360deg / var(--list-cycle));
-}
-
-
-ul li:nth-child(10n + 1)  a,
-ol li:nth-child(10n + 1)  a { color: hsl(calc(var(--list-hue-start) + 0 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 2)  a,
-ol li:nth-child(10n + 2)  a { color: hsl(calc(var(--list-hue-start) + 1 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 3)  a,
-ol li:nth-child(10n + 3)  a { color: hsl(calc(var(--list-hue-start) + 2 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 4)  a,
-ol li:nth-child(10n + 4)  a { color: hsl(calc(var(--list-hue-start) + 3 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 5)  a,
-ol li:nth-child(10n + 5)  a { color: hsl(calc(var(--list-hue-start) + 4 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 6)  a,
-ol li:nth-child(10n + 6)  a { color: hsl(calc(var(--list-hue-start) + 5 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 7)  a,
-ol li:nth-child(10n + 7)  a { color: hsl(calc(var(--list-hue-start) + 6 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 8)  a,
-ol li:nth-child(10n + 8)  a { color: hsl(calc(var(--list-hue-start) + 7 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 9)  a,
-ol li:nth-child(10n + 9)  a { color: hsl(calc(var(--list-hue-start) + 8 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-ul li:nth-child(10n + 10) a,
-ol li:nth-child(10n + 10) a { color: hsl(calc(var(--list-hue-start) + 9 * var(--list-step)), var(--list-sat), var(--list-light)); }
-
-
-
 
 li a {
   position: relative;
@@ -368,14 +322,15 @@ img:not(.icon) {
 .tag {
   border: 1px solid var(--surface1);
   background: var(--mantle);
-  color: var(--subtext1);
+  color: var(--overlay2);
 
   border-radius: 999px;
   padding: 0.15rem 0.6rem;
 
   font-size: 0.85rem;
-  line-height: 1.6;
+  line-height: 1.5;
   white-space: nowrap;
+  margin-top: 0.0rem;
 }
 
 .can-word {
@@ -406,4 +361,31 @@ img:not(.icon) {
   to {
     transform: scaleX(1);
   }
+}
+
+.item-meta {
+  margin-top: 0.15rem;
+  color: var(--subtext0);
+  font-size: 0.85rem;
+}
+
+.item-meta .dot {
+  margin: 0 0.25rem;
+  color: var(--subtext0);
+}
+
+/* Mobile: don’t squeeze title/date too hard */
+@media (max-width: 42rem) {
+  .item-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+  }
+  .item-date {
+    white-space: normal;
+  }
+}
+
+strong {
+  color: var(--text);
 }

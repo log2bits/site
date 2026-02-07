@@ -2,6 +2,8 @@
 title: FRC Computer Vision
 desc: OpenCV-based vision system to detect game objects and estimate 3D pose using AprilTags.
 tags: [Python, Java, Computer Vision, OpenCV, Robotics, Pose Estimation, AprilTags]
+kinds: [project, leadership]
+resume: true
 ---
 
 ### Overview

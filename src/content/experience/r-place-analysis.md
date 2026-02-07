@@ -2,6 +2,8 @@
 title: r/place Analysis
 desc: Data analysis of Reddit’s r/place database.
 tags: [Python, Data Analysis, Visualization, Large Datasets, Statistics]
+kinds: [project]
+resume: true
 ---
 
 ### Overview

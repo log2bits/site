@@ -56,3 +56,26 @@ I tend to learn by building things that:
 - Break in interesting ways if I get something wrong
 
 Right now I’m focused on deepening my understanding of systems, graphics, and performance-oriented software while continuing to build technically ambitious projects.
+
+### Timeline
+
+**High School (2019–2023)**  
+- Dual-enrolled at Foothill College, completing college-level coursework alongside high school  
+  *(Chemistry, Biology, and three Physics courses)*  
+- Built a strong CS foundation through AP CS A, robotics (FRC #6962), and independent projects  
+- Programming Lead for FRC robotics team; focused on control systems, simulation, and software reliability  
+- Explored visual and algorithmic programming through p5.js, data analysis, and optimization projects  
+
+**Summer 2022 — Software Engineering Intern, SmugMug**  
+- Full-time paid internship after sophomore year of high school  
+- Worked on production software systems, gaining early exposure to professional engineering workflows  
+
+**Summer 2023 — Software Engineering Intern, Flickr**  
+- Part-time internship after junior year of high school  
+- Focused on cloud compute optimization, performance tuning, and cost modeling in real production systems  
+
+**University (2023–Present)**  
+- Computer Science major at UC Santa Cruz (currently second year)  
+- Continuing to build performance-oriented, systems-level projects  
+- Deepening focus on graphics, GPU programming, computer vision, data analysis, and infrastructure  
+- Active in Game Design & Art (GDA) club; learning Godot and game systems engineering

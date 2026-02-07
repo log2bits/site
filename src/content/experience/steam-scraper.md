@@ -2,6 +2,8 @@
 title: Steam Scraper & Analysis
 desc: Web scraping and analysis of over 150,000 games on Steam.
 tags: [Python, Web Scraping, Data Analysis, Modeling, Large Datasets, Statistics]
+kinds: [project]
+resume: true
 ---
 
 ### Overview

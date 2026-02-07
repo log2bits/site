@@ -1,28 +1,28 @@
 ---
 const { title = "Logan MacAskill" } = Astro.props;
 
-// Current path (e.g. "/", "/projects", "/about")
+// Current path (e.g. "/", "/experience", "/about")
 const path = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
 const isHome = path === "/";
-const isProjects = path === "/projects";
+const isExperience = path === "/experience";
 const isAbout = path === "/about";
 
 // Button rules:
-// - Home: left -> /about, right -> /projects
-// - Other pages: left -> /, right -> the "other" page (projects <-> about)
+// - Home: left -> /about, right -> /experience
+// - Other pages: left -> /, right -> the "other" page (experience <-> about)
 let leftHref = "/";
 let leftLabel = "Home";
 
-let rightHref = "/projects";
-let rightLabel = "Projects";
+let rightHref = "/experience";
+let rightLabel = "Experience";
 
 if (isHome) {
   rightHref = "/about";
   rightLabel = "About Me";
-  leftHref = "/projects";
-  leftLabel = "Projects";
-} else if (isProjects) {
+  leftHref = "/experience";
+  leftLabel = "Experience";
+} else if (isExperience) {
   leftHref = "/";
   leftLabel = "Home";
   rightHref = "/about";
@@ -30,14 +30,14 @@ if (isHome) {
 } else if (isAbout) {
   leftHref = "/";
   leftLabel = "Home";
-  rightHref = "/projects";
-  rightLabel = "Projects";
+  rightHref = "/experience";
+  rightLabel = "Experience";
 } else {
-  // Any other page: default right button to Projects
+  // Any other page: default right button to Experience
   leftHref = "/";
   leftLabel = "Home";
-  rightHref = "/projects";
-  rightLabel = "Projects";
+  rightHref = "/experience";
+  rightLabel = "Experience";
 }
 ---
 
